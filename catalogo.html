@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,38 +9,259 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="registro.html">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="catalogo.html">Catalogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil.html">Mi cuenta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blogs.html">Blogs</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+            gap: 20px; /* separación entre productos */
+          }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .categoria {
+            font-size: 0.8em;
+            color: gray;
+            margin-top: 5px;
+        }
+
+        .titulo {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .precio {
+            font-size: 1em;
+            margin: 5px 0;
+        }
+
+        .precio .oferta {
+            color: #d00;
+            font-weight: bold;
+        }
+
+        .precio .tachado {
+            text-decoration: line-through;
+            color: #777;
+            margin-right: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #e91e63;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #c2185b;
+        }
+
+        .badge {
+            background: #2962ff;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.7em;
+            position: absolute;
+            margin-top: -10px;
+            margin-left: -10px;
+        }
+
+        .card-container {
+            position: relative;
+        }
+    </style>
+    </head>
+
     <body>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <div class="container-fluid">
-    
-                <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo"></a> 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar" >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="mynavbar">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="registro.html">Registrarse</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="catalogo.html">Catalogo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="perfil.html">Mi cuenta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blogs.html">Blogs</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="text" placeholder="Search">
-                        <button class="btn btn-primary" type="button">Search</button>
-                    </form>
+
+        <h1>Catálogo Completo</h1>
+        <div class="grid">
+
+            <!-- Producto -->
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego1.jpg" alt="Tartapies">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Tartapies</p>
+                    <p class="precio">
+                        <span class="oferta">$15.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
                 </div>
             </div>
-        </nav>
+
+            <!-- Otro Producto -->
+            <div class="card">
+                <img src="juego2.jpg" alt="Charadas Family">
+                <p class="categoria">competitivo</p>
+                <p class="titulo">Charadas Family</p>
+                <p class="precio">
+                    <span class="oferta">$10.990</span>
+                </p>
+                <a href="#" class="btn">Añadir al carrito</a>
+            </div>
+
+            <!-- Otro Producto -->
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego3.jpg" alt="Misión Chuchungo">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Misión Chuchungo</p>
+                    <p class="precio">
+                        <span class="oferta">$13.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego3.jpg" alt="seba">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Misión Chuchungo</p>
+                    <p class="precio">
+                        <span class="oferta">$13.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego1.jpg" alt="Tartapies">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Tartapies</p>
+                    <p class="precio">
+                        <span class="oferta">$15.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego1.jpg" alt="Tartapies">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Tartapies</p>
+                    <p class="precio">
+                        <span class="oferta">$15.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego1.jpg" alt="Tartapies">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Tartapies</p>
+                    <p class="precio">
+                        <span class="oferta">$15.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego1.jpg" alt="Tartapies">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Tartapies</p>
+                    <p class="precio">
+                        <span class="oferta">$15.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego1.jpg" alt="Tartapies">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Tartapies</p>
+                    <p class="precio">
+                        <span class="oferta">$15.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+            <div class="card-container">
+                
+                <div class="card">
+                    <img src="juego1.jpg" alt="Tartapies">
+                    <p class="categoria">competitivo</p>
+                    <p class="titulo">Tartapies</p>
+                    <p class="precio">
+                        <span class="oferta">$15.990</span>
+                    </p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            </div>
+
+
+        </div>
+
+
     </body>
     <p>catalogo</p>
 </body>
+
 </html>
