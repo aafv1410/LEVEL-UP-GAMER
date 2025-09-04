@@ -12,257 +12,382 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container-fluid">
 
-            <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="registro.html">Registrarse</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="catalogo.html">Catalogo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="perfil.html">Mi cuenta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blogs.html">Blogs</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search">
-                    <button class="btn btn-primary" type="button">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f9f9f9;
-            margin: 0;
-            padding: 20px;
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'Roboto', sans-serif;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-            gap: 20px; /* separación entre productos */
-          }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: #1E90FF;
+        }
 
         .card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            text-align: center;
+            background-color: #111111;
+            border: 1px solid #1E90FF;
+            border-radius: 15px;
+            transition: transform 0.2s;
         }
 
-        .card img {
-            max-width: 100%;
-            border-radius: 8px;
+        .card:hover {
+            transform: scale(1.05);
+            border-color: #39FF14;
         }
 
-        .categoria {
-            font-size: 0.8em;
-            color: gray;
-            margin-top: 5px;
+        .btn-levelup {
+            background-color: #1E90FF;
+            color: #fff;
+            border-radius: 30px;
+            transition: 0.3s;
         }
 
-        .titulo {
-            font-size: 1.1em;
-            font-weight: bold;
-            margin: 8px 0;
+        .btn-levelup:hover {
+            background-color: #39FF14;
+            color: #000;
         }
 
-        .precio {
-            font-size: 1em;
-            margin: 5px 0;
+        .navbar {
+            background-color: #111111;
         }
 
-        .precio .oferta {
-            color: #d00;
-            font-weight: bold;
-        }
-
-        .precio .tachado {
-            text-decoration: line-through;
-            color: #777;
-            margin-right: 5px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #e91e63;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background: #c2185b;
-        }
-
-        .badge {
-            background: #2962ff;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 5px;
-            font-size: 0.7em;
-            position: absolute;
-            margin-top: -10px;
-            margin-left: -10px;
-        }
-
-        .card-container {
-            position: relative;
+        .form-control {
+            border-radius: 20px;
         }
     </style>
     </head>
 
     <body>
-        
 
-        <h1>Catálogo Completo</h1>
-        <div class="grid">
-
-            <!-- Producto -->
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego1.jpg" alt="Tartapies">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Tartapies</p>
-                    <p class="precio">
-                        <span class="oferta">$15.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
-
-            <!-- Otro Producto -->
-            <div class="card">
-                <img src="juego2.jpg" alt="Charadas Family">
-                <p class="categoria">competitivo</p>
-                <p class="titulo">Charadas Family</p>
-                <p class="precio">
-                    <span class="oferta">$10.990</span>
-                </p>
-                <a href="#" class="btn">Añadir al carrito</a>
-            </div>
-
-            <!-- Otro Producto -->
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego3.jpg" alt="Misión Chuchungo">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Misión Chuchungo</p>
-                    <p class="precio">
-                        <span class="oferta">$13.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego3.jpg" alt="seba">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Misión Chuchungo</p>
-                    <p class="precio">
-                        <span class="oferta">$13.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego1.jpg" alt="Tartapies">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Tartapies</p>
-                    <p class="precio">
-                        <span class="oferta">$15.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego1.jpg" alt="Tartapies">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Tartapies</p>
-                    <p class="precio">
-                        <span class="oferta">$15.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego1.jpg" alt="Tartapies">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Tartapies</p>
-                    <p class="precio">
-                        <span class="oferta">$15.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego1.jpg" alt="Tartapies">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Tartapies</p>
-                    <p class="precio">
-                        <span class="oferta">$15.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego1.jpg" alt="Tartapies">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Tartapies</p>
-                    <p class="precio">
-                        <span class="oferta">$15.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
-            <div class="card-container">
-                
-                <div class="card">
-                    <img src="juego1.jpg" alt="Tartapies">
-                    <p class="categoria">competitivo</p>
-                    <p class="titulo">Tartapies</p>
-                    <p class="precio">
-                        <span class="oferta">$15.990</span>
-                    </p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            </div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="registro.html">Registrarse</a></li>
 
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdown" role="button"
+                                data-bs-toggle="dropdown">
+                                Catálogo
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Juegos de Mesa')">Juegos
+                                        de Mesa</a></li>
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="filterCategory('Accesorios')">Accesorios</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Consolas')">Consolas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="filterCategory('Computadores Gamers')">Computadores Gamers</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Sillas Gamers')">Sillas
+                                        Gamers</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Mouse')">Mouse</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Mousepad')">Mousepad</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="filterCategory('Poleras Personalizadas')">Poleras Personalizadas</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="filterCategory('Polerones Personalizados')">Polerones
+                                        Personalizados</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterCategory('all')">Ver Todo</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+                        <li class="nav-item">
+                            <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
+                                🛒 Carrito <span id="cart-count" class="badge bg-danger">0</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container my-4">
+            <input type="text" id="searchBar" class="form-control" placeholder="Buscar producto por nombre...">
         </div>
 
 
+        <div class="container my-4">
+            <h2 class="mb-4">Catálogo de Productos</h2>
+            <div class="row g-4" id="product-list">
+
+
+                <div class="col-md-4 product-card" data-category="Juegos de Mesa" data-name="Catan">
+                    <div class="card h-100 p-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/2/2d/Catan-2015-boxart.jpg"
+                            class="card-img-top" alt="Catan">
+                        <div class="card-body">
+                            <h5 class="card-title">Catan</h5>
+                            <p class="card-text">Juego de estrategia para 3-4 jugadores.</p>
+                            <p class="fw-bold text-success">$29.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart" data-name="Catan"
+                                data-price="29990">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Juegos de Mesa" data-name="Carcassonne">
+                    <div class="card h-100 p-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/4/46/Carcassonne-game.jpg"
+                            class="card-img-top" alt="Carcassonne">
+                        <div class="card-body">
+                            <h5 class="card-title">Carcassonne</h5>
+                            <p class="card-text">Juego de colocación de fichas en un paisaje medieval.</p>
+                            <p class="fw-bold text-success">$24.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart" data-name="Carcassonne"
+                                data-price="24990">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Accesorios" data-name="Controlador Xbox Series X">
+                    <div class="card h-100 p-3">
+                        <img src="https://m.media-amazon.com/images/I/61+jLDU9fVL._AC_SX679_.jpg" class="card-img-top"
+                            alt="Control Xbox">
+                        <div class="card-body">
+                            <h5 class="card-title">Controlador Xbox Series X</h5>
+                            <p class="card-text">Experiencia cómoda con botones mapeables y respuesta táctil mejorada.
+                            </p>
+                            <p class="fw-bold text-success">$59.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart" data-name="Controlador Xbox Series X"
+                                data-price="59990">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Accesorios"
+                    data-name="Auriculares Gamer HyperX Cloud II">
+                    <div class="card h-100 p-3">
+                        <img src="https://m.media-amazon.com/images/I/71oFJW4-3dL._AC_SL1500_.jpg" class="card-img-top"
+                            alt="Auriculares HyperX">
+                        <div class="card-body">
+                            <h5 class="card-title">Auriculares Gamer HyperX Cloud II</h5>
+                            <p class="card-text">Sonido envolvente de calidad con micrófono desmontable.</p>
+                            <p class="fw-bold text-success">$79.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart"
+                                data-name="Auriculares Gamer HyperX Cloud II" data-price="79990">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Consolas" data-name="PlayStation 5">
+                    <div class="card h-100 p-3">
+                        <img src="https://m.media-amazon.com/images/I/619BkvKW35L._AC_SX679_.jpg" class="card-img-top"
+                            alt="PlayStation 5">
+                        <div class="card-body">
+                            <h5 class="card-title">PlayStation 5</h5>
+                            <p class="card-text">La consola de última generación de Sony.</p>
+                            <p class="fw-bold text-success">$549.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart" data-name="PlayStation 5"
+                                data-price="549990">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Computadores Gamers"
+                    data-name="PC Gamer ASUS ROG Strix">
+                    <div class="card h-100 p-3">
+                        <img src="https://dlcdnwebimgs.asus.com/gain/4fa36d07-8941-4859-801c-3d7a0b2b2e4d/"
+                            class="card-img-top" alt="PC Gamer ASUS">
+                        <div class="card-body">
+                            <h5 class="card-title">PC Gamer ASUS ROG Strix</h5>
+                            <p class="card-text">Potente equipo diseñado para los gamers más exigentes.</p>
+                            <p class="fw-bold text-success">$1.299.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart" data-name="PC Gamer ASUS ROG Strix"
+                                data-price="1299990">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Sillas Gamers"
+                    data-name="Silla Gamer Secretlab Titan">
+                    <div class="card h-100 p-3">
+                        <img src="https://secretlab.co/cdn/shop/products/TITAN_EVO_2022_Series-Black3_900x.png"
+                            class="card-img-top" alt="Silla Gamer Secretlab Titan">
+                        <div class="card-body">
+                            <h5 class="card-title">Silla Gamer Secretlab Titan</h5>
+                            <p class="card-text">Diseñada para máximo confort y soporte ergonómico.</p>
+                            <p class="fw-bold text-success">$349.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart" data-name="Silla Gamer Secretlab Titan"
+                                data-price="349990">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Mouse" data-name="Mouse Gamer Logitech G502 HERO">
+                    <div class="card h-100 p-3">
+                        <img src="https://resource.logitechg.com/w_1200,h_630,c_limit,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/g502-hero/g502-hero-gallery-1.png?v=1"
+                            class="card-img-top" alt="Mouse Logitech G502">
+                        <div class="card-body">
+                            <h5 class="card-title">Mouse Gamer Logitech G502 HERO</h5>
+                            <p class="card-text">Sensor de alta precisión y botones personalizables.</p>
+                            <p class="fw-bold text-success">$49.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart" data-name="Mouse Gamer Logitech G502 HERO"
+                                data-price="49990">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Mousepad"
+                    data-name="Mousepad Razer Goliathus Extended Chroma">
+                    <div class="card h-100 p-3">
+                        <img src="https://assets2.razerzone.com/images/pnx.assets/7c04b6e018fced3b7a7e567c90e1c839/razer-goliathus-chroma-gallery-04.jpg"
+                            class="card-img-top" alt="Mousepad Razer">
+                        <div class="card-body">
+                            <h5 class="card-title">Mousepad Razer Goliathus Extended Chroma</h5>
+                            <p class="card-text">Iluminación RGB personalizable con superficie uniforme.</p>
+                            <p class="fw-bold text-success">$29.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart"
+                                data-name="Mousepad Razer Goliathus Extended Chroma" data-price="29990">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 product-card" data-category="Poleras Personalizadas"
+                    data-name="Polera Gamer Personalizada 'Level-Up'">
+                    <div class="card h-100 p-3">
+                        <img src="https://i.etsystatic.com/23307213/r/il/df5b11/2620746310/il_794xN.2620746310_t6g5.jpg"
+                            class="card-img-top" alt="Polera Gamer">
+                        <div class="card-body">
+                            <h5 class="card-title">Polera Gamer Personalizada 'Level-Up'</h5>
+                            <p class="card-text">Camiseta cómoda y personalizable con tu gamer tag.</p>
+                            <p class="fw-bold text-success">$14.990 CLP</p>
+                            <button class="btn btn-levelup w-100 add-to-cart"
+                                data-name="Polera Gamer Personalizada 'Level-Up'" data-price="14990">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title">🛒 Carrito de Compras</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-items"></tbody>
+                        </table>
+                        <h4 class="text-end">Total: <span id="cart-total">$0 CLP</span></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" id="clear-cart">Vaciar Carrito</button>
+                        <button class="btn btn-success">Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            let cart = [];
+
+            function renderCart() {
+                const cartItemsContainer = document.getElementById("cart-items");
+                const cartCount = document.getElementById("cart-count");
+                const cartTotal = document.getElementById("cart-total");
+                cartItemsContainer.innerHTML = "";
+
+                let total = 0;
+                cart.forEach((item, index) => {
+                    const subtotal = item.price * item.quantity;
+                    total += subtotal;
+
+                    cartItemsContainer.innerHTML += `
+          <tr>
+            <td>${item.name}</td>
+            <td>
+              <input type="number" min="1" value="${item.quantity}" 
+                     class="form-control form-control-sm" 
+                     style="width:70px"
+                     onchange="updateQuantity(${index}, this.value)">
+            </td>
+            <td>$${item.price.toLocaleString("es-CL")}</td>
+            <td>$${subtotal.toLocaleString("es-CL")}</td>
+          </tr>
+        `;
+                });
+
+                cartCount.textContent = cart.length;
+                cartTotal.textContent = "$" + total.toLocaleString("es-CL") + " CLP";
+            }
+
+            function updateQuantity(index, quantity) {
+                cart[index].quantity = parseInt(quantity);
+                renderCart();
+            }
+
+            document.querySelectorAll(".add-to-cart").forEach(button => {
+                button.addEventListener("click", () => {
+                    const name = button.getAttribute("data-name");
+                    const price = parseInt(button.getAttribute("data-price"));
+
+                    const existing = cart.find(item => item.name === name);
+                    if (existing) {
+                        existing.quantity++;
+                    } else {
+                        cart.push({ name, price, quantity: 1 });
+                    }
+                    renderCart();
+                });
+            });
+
+            document.getElementById("clear-cart").addEventListener("click", () => {
+                cart = [];
+                renderCart();
+            });
+
+            document.getElementById("searchBar").addEventListener("keyup", function () {
+                let search = this.value.toLowerCase();
+                document.querySelectorAll(".product-card").forEach(card => {
+                    let name = card.getAttribute("data-name").toLowerCase();
+                    card.style.display = name.includes(search) ? "block" : "none";
+                });
+            });
+
+
+            function filterCategory(category) {
+                document.querySelectorAll(".product-card").forEach(card => {
+                    if (category === "all" || card.getAttribute("data-category") === category) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            }
+        </script>
+        <p>catalogo</p>
     </body>
-    <p>catalogo</p>
-</body>
 
 </html>
