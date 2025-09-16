@@ -50,6 +50,50 @@
       color: #39FF14;
     }
   </style>
+  <style>
+  .banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+  }
+
+  .banner a {
+    color: #ffd700;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .banner a:hover {
+    text-decoration: underline;
+  }
+
+  /* Este es el margen que evita que el contenido quede tapado */
+  .content {
+    margin-top: 50px; /* Ajusta según la altura real de tu banner */
+  }
+</style>
+</head>
+<body>
+  <div class="banner">
+    Utiliza el Correo de <strong>DoucUC</strong> para un 20% de descuento toda tu vida
+    (<em>no acumulable con otros descuentos</em>) – Envíos a todo Chile!
+    <a href="#">Ver más</a>
+  </div>
+  
+  <div class="content">
+    <!-- Aquí va el resto de tu página -->
+    <p>Este contenido ya no quedará tapado por el banner.</p>
+  </div>
+</body>
+
 </head>
 <body class="bg-dark text-white">
 
