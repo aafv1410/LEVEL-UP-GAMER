@@ -1,114 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-</head>
-<style>
-    body {
-        background-color: #000000;
-        color: #FFFFFF;
-        font-family: 'Roboto', sans-serif;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs y Noticias - Level-Up Gamer</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <style>
+    .blog-header {
+      background: url("img/blog-hero.jpg") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
     }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-        font-family: 'Orbitron', sans-serif;
-        color: #1E90FF;
+    .blog-header h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 10px black;
     }
-
     .card {
-        background-color: #111111;
-        border: 1px solid #1E90FF;
-        border-radius: 15px;
-        transition: transform 0.2s;
+      transition: transform 0.2s ease;
     }
-
     .card:hover {
-        transform: scale(1.05);
-        border-color: #39FF14;
+      transform: scale(1.03);
     }
-
     .btn-levelup {
-        background-color: #1E90FF;
-        color: #fff;
-        border-radius: 30px;
-        transition: 0.3s;
+      background-color: #1E90FF;
+      color: #fff;
+      border-radius: 30px;
     }
-
     .btn-levelup:hover {
-        background-color: #39FF14;
-        color: #000;
+      background-color: #39FF14;
+      color: #000;
     }
+  </style>
+</head>
+<body class="bg-dark text-white">
 
-    .navbar {
-        background-color: #111111;
-    }
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:50px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="perfil.html">Mi Cuenta</a></li>
+          <li class="nav-item"><a class="nav-link active" href="blogs.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    .form-control {
-        border-radius: 20px;
-    }
-</style>
-<body>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="registro.html">Registrarse</a></li>
+  <!-- Header Blogs -->
+  <header class="blog-header">
+    <h1>📰 Blogs y Noticias Gamer</h1>
+    <p>Entérate de las últimas novedades, consejos y guías para mejorar tu experiencia de juego</p>
+  </header>
 
+  <!-- Noticias -->
+  <section class="container my-5">
+    <h2 class="text-primary text-center mb-4">🚀 Últimas Noticias</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/noticia1.jpg" class="card-img-top" alt="Noticia 1">
+          <div class="card-body">
+            <h5 class="card-title">Lanzamiento de la nueva Xbox Series Z</h5>
+            <p class="card-text">Microsoft sorprende con una nueva consola que promete revolucionar el gaming.</p>
+            <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#modalNoticia1">Leer más</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/noticia2.jpg" class="card-img-top" alt="Noticia 2">
+          <div class="card-body">
+            <h5 class="card-title">The Last of Us 3 anunciado oficialmente</h5>
+            <p class="card-text">Naughty Dog confirma la secuela más esperada en el mundo gamer.</p>
+            <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#modalNoticia2">Leer más</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/noticia3.jpg" class="card-img-top" alt="Noticia 3">
+          <div class="card-body">
+            <h5 class="card-title">eSports: Chile en la final mundial</h5>
+            <p class="card-text">Un equipo chileno llega a la final de un torneo internacional de League of Legends.</p>
+            <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#modalNoticia3">Leer más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdown" role="button"
-                                data-bs-toggle="dropdown">
-                                Catálogo
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Juegos de Mesa')">Juegos
-                                        de Mesa</a></li>
-                                <li><a class="dropdown-item" href="#"
-                                        onclick="filterCategory('Accesorios')">Accesorios</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Consolas')">Consolas</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#"
-                                        onclick="filterCategory('Computadores Gamers')">Computadores Gamers</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Sillas Gamers')">Sillas
-                                        Gamers</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Mouse')">Mouse</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="filterCategory('Mousepad')">Mousepad</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#"
-                                        onclick="filterCategory('Poleras Personalizadas')">Poleras Personalizadas</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#"
-                                        onclick="filterCategory('Polerones Personalizados')">Polerones
-                                        Personalizados</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="filterCategory('all')">Ver Todo</a></li>
-                            </ul>
-                        </li>
+  <!-- Consejos y Guías -->
+  <section class="container my-5">
+    <h2 class="text-primary text-center mb-4">🎯 Consejos y Guías</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/guia1.jpg" class="card-img-top" alt="Guía 1">
+          <div class="card-body">
+            <h5 class="card-title">Cómo optimizar tu PC para juegos</h5>
+            <p class="card-text">Tips para mejorar el rendimiento de tu computador gamer y evitar el lag.</p>
+            <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#modalGuia1">Leer más</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/guia2.jpg" class="card-img-top" alt="Guía 2">
+          <div class="card-body">
+            <h5 class="card-title">Los mejores juegos cooperativos 2025</h5>
+            <p class="card-text">Descubre títulos ideales para jugar con amigos este año.</p>
+            <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#modalGuia2">Leer más</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/guia3.jpg" class="card-img-top" alt="Guía 3">
+          <div class="card-body">
+            <h5 class="card-title">Guía para elegir tu silla gamer</h5>
+            <p class="card-text">Qué aspectos considerar para comodidad y ergonomía al jugar.</p>
+            <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#modalGuia3">Leer más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                        <li class="nav-item"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
-                        <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
-                        <li class="nav-item">
-                            <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
-                                🛒 Carrito <span id="cart-count" class="badge bg-danger">0</span>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </body>
-    <p>blogs</p>
+  <!-- Modales (Contenido Expandido) -->
+  <div class="modal fade" id="modalNoticia1" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">Lanzamiento de la nueva Xbox Series Z</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>La nueva Xbox Series Z trae un procesador más potente, soporte para 8K, compatibilidad total con juegos retro y un diseño modular que permitirá expandir su hardware de manera sencilla. Microsoft asegura que será la consola más versátil y potente de la historia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalNoticia2" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">The Last of Us 3 anunciado oficialmente</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Naughty Dog ha confirmado que The Last of Us 3 está en desarrollo, prometiendo una narrativa aún más inmersiva y un multijugador cooperativo expandido. La historia continuará los eventos de la segunda entrega, explorando nuevas ciudades y personajes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalNoticia3" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">eSports: Chile en la final mundial</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>El equipo chileno "Condor Gaming" sorprendió en el mundial de League of Legends, alcanzando la final contra Corea del Sur. Los jugadores destacaron por su trabajo en equipo y estrategias innovadoras.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalGuia1" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">Cómo optimizar tu PC para juegos</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Recomendamos mantener tus drivers de video actualizados, optimizar la ventilación del gabinete, desactivar programas en segundo plano y utilizar un SSD para mejorar los tiempos de carga.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalGuia2" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">Los mejores juegos cooperativos 2025</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Algunos de los mejores juegos cooperativos de este año son: <strong>It Takes Three</strong>, <strong>Monster Hunter Legacy</strong> y <strong>Overcooked 3</strong>. Todos ofrecen diversión garantizada en equipo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalGuia3" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">Guía para elegir tu silla gamer</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Para elegir la mejor silla gamer debes considerar: altura ajustable, soporte lumbar, materiales transpirables y reposabrazos ergonómicos. Una buena silla ayuda a evitar dolores de espalda en sesiones largas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
