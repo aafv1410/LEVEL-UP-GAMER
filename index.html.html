@@ -75,25 +75,10 @@
     text-decoration: underline;
   }
 
-  /* Este es el margen que evita que el contenido quede tapado */
   .content {
-    margin-top: 50px; /* Ajusta según la altura real de tu banner */
+    margin-top: 50px; 
   }
 </style>
-</head>
-<body>
-  <div class="banner">
-    Utiliza el Correo de <strong>DoucUC</strong> para un 20% de descuento toda tu vida
-    (<em>no acumulable con otros descuentos</em>) – Envíos a todo Chile!
-    <a href="#">Ver más</a>
-  </div>
-  
-  <div class="content">
-    <!-- Aquí va el resto de tu página -->
-    <p>Este contenido ya no quedará tapado por el banner.</p>
-  </div>
-</body>
-
 </head>
 <body class="bg-dark text-white">
 
@@ -115,20 +100,60 @@
       </div>
     </div>
   </nav>
+  <style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* ajusta según tu navbar */
+    background-color: #000000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
 
-<<<<<<< HEAD
-<body>
-    
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container-fluid">
-=======
+  .banner {
+    position: sticky; /* hace que no se mueva */
+    top: 60px; /* justo debajo del navbar */
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    z-index: 999; /* debajo del navbar */
+  }
+
+  .banner a {
+    color: #ffd700;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .banner a:hover {
+    text-decoration: underline;
+  }
+
+  .content {
+    margin-top: 100px; /* espacio para navbar + banner */
+  }
+</style>
+
+<div class="banner">
+  Utiliza el Correo de <strong>DoucUC</strong> para un 20% de descuento para toda la tienda de por vida!
+  (<em>no acumulable con otros descuentos</em>) 
+</div>
+
+
   <!-- Hero -->
   <header class="hero">
     <h1>Bienvenido a Level-Up Gamer 🎮</h1>
     <p>Tu tienda gamer con lo mejor en consolas, accesorios, PCs y más</p>
     <a href="catalogo.html" class="btn btn-levelup btn-lg">Explorar Catálogo</a>
   </header>
->>>>>>> f257ccadb116fc687724a843156dfd777071d56b
 
   <!-- Productos Destacados -->
   <section class="container my-5">
