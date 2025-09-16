@@ -1,70 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level-Up Gamer - Inicio</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <style>
+    .hero {
+      background: url("img/hero.jpg") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px black;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .btn-levelup {
+      background-color: #1E90FF;
+      color: #fff;
+      border-radius: 30px;
+    }
+    .btn-levelup:hover {
+      background-color: #39FF14;
+      color: #000;
+    }
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      color: #1E90FF;
+    }
+    footer {
+      background: #111;
+      color: #aaa;
+      padding: 30px 0;
+    }
+    footer a {
+      color: #1E90FF;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #39FF14;
+    }
+  </style>
 </head>
+<body class="bg-dark text-white">
 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:50px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="perfil.html">Mi Cuenta</a></li>
+          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="registro.html">Registro</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
+<<<<<<< HEAD
 <body>
     
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container-fluid">
+=======
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Bienvenido a Level-Up Gamer 🎮</h1>
+    <p>Tu tienda gamer con lo mejor en consolas, accesorios, PCs y más</p>
+    <a href="catalogo.html" class="btn btn-levelup btn-lg">Explorar Catálogo</a>
+  </header>
+>>>>>>> f257ccadb116fc687724a843156dfd777071d56b
 
-            <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo"></a>
-            <h1 class="text-primary">¡Desafía tus límites con Level-Up Gamer! </h1>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="registro.html">Registrarse</a></li>
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdown" role="button"
-                            data-bs-toggle="dropdown">
-                            Catálogo
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="catalogo.html?categoria=Juegos%20de%20Mesa">Juegos de
-                                    Mesa</a></li>
-                            <li><a class="dropdown-item" href="catalogo.html?categoria=Accesorios">Accesorios</a></li>
-                            <li><a class="dropdown-item" href="catalogo.html?categoria=Consolas">Consolas</a></li>
-                            <li><a class="dropdown-item"
-                                    href="catalogo.html?categoria=Computadores%20Gamers">Computadores Gamers</a></li>
-                            <li><a class="dropdown-item" href="catalogo.html?categoria=Sillas%20Gamers">Sillas
-                                    Gamers</a></li>
-                            <li><a class="dropdown-item" href="catalogo.html?categoria=Mouse">Mouse</a></li>
-                            <li><a class="dropdown-item" href="catalogo.html?categoria=Mousepad">Mousepad</a></li>
-                            <li><a class="dropdown-item" href="catalogo.html?categoria=Poleras%20Personalizadas">Poleras
-                                    Personalizadas</a></li>
-                            <li><a class="dropdown-item"
-                                    href="catalogo.html?categoria=Polerones%20Personalizados">Polerones
-                                    Personalizados</a></li>
-                            <li><a class="dropdown-item" href="catalogo.html?categoria=all">Ver Todo</a></li>
-
-                        </ul>
-                    </li>
-
-                    <li class="nav-item"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
-                    <li class="nav-item">
-                        <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
-                            🛒 Carrito <span id="cart-count" class="badge bg-danger">0</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+  <!-- Productos Destacados -->
+  <section class="container my-5">
+    <h2 class="section-title">🔥 Productos Destacados</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/playstation5.jpg" class="card-img-top" alt="PS5">
+          <div class="card-body">
+            <h5 class="card-title">PlayStation 5</h5>
+            <p class="card-text">La consola más potente de Sony, experiencia next-gen.</p>
+            <a href="catalogo.html?categoria=Consolas" class="btn btn-levelup">Ver más</a>
+          </div>
         </div>
-    </nav>
-    <p>index</p>
-</body>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/pcgamer.jpg" class="card-img-top" alt="PC Gamer">
+          <div class="card-body">
+            <h5 class="card-title">PC Gamer</h5>
+            <p class="card-text">Rendimiento extremo para tus juegos favoritos.</p>
+            <a href="catalogo.html?categoria=Computadores Gamers" class="btn btn-levelup">Ver más</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/sillagamer.jpg" class="card-img-top" alt="Silla Gamer">
+          <div class="card-body">
+            <h5 class="card-title">Silla Gamer</h5>
+            <p class="card-text">Comodidad y estilo para largas sesiones de juego.</p>
+            <a href="catalogo.html?categoria=Sillas Gamers" class="btn btn-levelup">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Beneficios -->
+  <section class="container my-5">
+    <h2 class="section-title">💡 ¿Por qué elegirnos?</h2>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <h4>🚚 Envío rápido</h4>
+        <p>Recibe tus productos en la puerta de tu casa en tiempo récord.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>🛡️ Garantía gamer</h4>
+        <p>Todos nuestros productos cuentan con garantía oficial.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>💳 Pagos seguros</h4>
+        <p>Compra con confianza con métodos de pago protegidos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="bg-secondary py-5">
+    <div class="container">
+      <h2 class="section-title">⭐ Lo que dicen nuestros gamers</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p>“Compré mi PS5 aquí y llegó en 2 días, todo perfecto 👌.”</p>
+            <footer class="blockquote-footer text-white">Carlos, Santiago</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p>“Los mejores precios en accesorios gamer, 100% recomendado.”</p>
+            <footer class="blockquote-footer text-white">María, Valparaíso</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4">
+          <blockquote class="blockquote">
+            <p>“Me armaron un PC brutal para streaming. 10/10.”</p>
+            <footer class="blockquote-footer text-white">Diego, Concepción</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
+      <p>
+        <a href="#">Facebook</a> | 
+        <a href="#">Instagram</a> | 
+        <a href="#">Twitter</a>
+      </p>
+      <p>Contacto: soporte@levelupgamer.cl</p>
+    </div>
+  </footer>
+
+</body>
 </html>
