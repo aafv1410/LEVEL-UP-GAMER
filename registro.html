@@ -1,178 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro - Level-Up Gamer</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Level-Up Gamer</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-dark text-white">
 
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="registro.html">Registrarse</a></li>
-          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
-          <li class="nav-item"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
-          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container my-5 pt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card p-4 form-section">
-          <h2 class="text-center text-primary mb-4">Crear Cuenta</h2>
-          <form id="registroForm">
-            <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre Completo</label>
-              <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre completo" required>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+                    <li class="nav-item" id="nav-mi-cuenta"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
+                    <li class="nav-item" id="nav-iniciar-sesion"><a class="nav-link" href="inicio.html">Iniciar Sesión</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="registro.html">Registrarse</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+                </ul>
             </div>
-            <div class="mb-3">
-              <label for="correo" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com" required>
-              <div id="correoError" class="error-msg"></div>
-            </div>
-            <div class="mb-3">
-              <label for="usuario" class="form-label">Nombre de Usuario</label>
-              <input type="text" class="form-control" id="usuario" placeholder="Tu gamer tag" required>
-            </div>
-            <div class="mb-3">
-              <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-              <input type="date" class="form-control" id="fechaNacimiento" required>
-              <div id="edadError" class="error-msg"></div>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password" placeholder="Mínimo 6 caracteres" required>
-              <div id="passwordError" class="error-msg"></div>
-            </div>
-            <div class="mb-3">
-              <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-              <input type="password" class="form-control" id="confirmPassword" placeholder="Repite tu contraseña" required>
-              <div id="confirmError" class="error-msg"></div>
-            </div>
-            <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="terminos" required>
-              <label class="form-check-label" for="terminos">
-                Acepto los <a href="#" class="text-primary">términos y condiciones</a>
-              </label>
-            </div>
-            <button type="submit" class="btn btn-levelup w-100">Registrarse</button>
-          </form>
         </div>
-      </div>
+    </nav>
+
+    <div class="container my-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4 form-section">
+                    <h2 class="text-center text-primary mb-4">Crear Cuenta</h2>
+                    <form id="registroForm">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre completo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com" required>
+                            <div id="correoError" class="error-msg"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="usuario" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="usuario" placeholder="Tu gamer tag" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNacimiento" required>
+                            <div id="edadError" class="error-msg"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" placeholder="Mínimo 6 caracteres" required>
+                            <div id="passwordError" class="error-msg"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Repite tu contraseña" required>
+                            <div id="confirmError" class="error-msg"></div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="terminos" required>
+                            <label class="form-check-label" for="terminos">
+                                Acepto los <a href="#" class="text-primary">términos y condiciones</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-levelup w-100">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const correoInput = document.getElementById("correo");
-    const passwordInput = document.getElementById("password");
-    const confirmInput = document.getElementById("confirmPassword");
-    const fechaInput = document.getElementById("fechaNacimiento");
-    const registroForm = document.getElementById("registroForm");
-
-    const correoError = document.getElementById("correoError");
-    const passwordError = document.getElementById("passwordError");
-    const confirmError = document.getElementById("confirmError");
-    const edadError = document.getElementById("edadError");
-
-    // Función para calcular edad
-    function calcularEdad(fechaNac) {
-      const hoy = new Date();
-      const nacimiento = new Date(fechaNac);
-      let edad = hoy.getFullYear() - nacimiento.getFullYear();
-      const m = hoy.getMonth() - nacimiento.getMonth();
-      if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
-        edad--;
-      }
-      return edad;
-    }
-
-    // Validación de campos en tiempo real
-    function validarCampo(input, errorElement, regex = null, mensajeError = "") {
-      const valor = input.value.trim();
-      if (valor === "") {
-        errorElement.textContent = "Este campo es obligatorio.";
-      } else if (regex && !regex.test(valor)) {
-        errorElement.textContent = mensajeError;
-      } else {
-        errorElement.textContent = "";
-      }
-    }
-
-    // Validación de contraseñas
-    function validarContrasenas() {
-      if (passwordInput.value.length < 6) {
-        passwordError.textContent = "La contraseña debe tener al menos 6 caracteres.";
-      } else {
-        passwordError.textContent = "";
-      }
-      if (confirmInput.value !== passwordInput.value) {
-        confirmError.textContent = "Las contraseñas no coinciden.";
-      } else {
-        confirmError.textContent = "";
-      }
-    }
-
-    // Escuchar eventos en los inputs
-    correoInput.addEventListener("input", () => validarCampo(correoInput, correoError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Ingresa un correo válido."));
-    passwordInput.addEventListener("input", validarContrasenas);
-    confirmInput.addEventListener("input", validarContrasenas);
-    fechaInput.addEventListener("input", () => {
-      const edad = calcularEdad(fechaInput.value);
-      if (edad < 18) {
-        edadError.textContent = "Debes tener al menos 18 años para registrarte.";
-      } else {
-        edadError.textContent = "";
-      }
-    });
-
-    // Validación final al enviar el formulario
-    registroForm.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const nombre = document.getElementById("nombre").value.trim();
-      const correo = correoInput.value.trim();
-      const usuario = document.getElementById("usuario").value.trim();
-      const pass = passwordInput.value;
-      const confirm = confirmInput.value;
-      const fechaNacimiento = fechaInput.value;
-
-      // Realizar todas las validaciones
-      const esCorreoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
-      const esPasswordValido = pass.length >= 6;
-      const contrasenasCoinciden = pass === confirm;
-      const esMayorDeEdad = calcularEdad(fechaNacimiento) >= 18;
-
-      if (!esCorreoValido || !esPasswordValido || !contrasenasCoinciden || !esMayorDeEdad) {
-        alert("Por favor, corrige los errores en el formulario antes de continuar.");
-        return;
-      }
-
-      // Crear objeto de usuario y guardar en localStorage
-      const user = {
-        nombre: nombre,
-        correo: correo,
-        usuario: usuario,
-        fechaNacimiento: fechaNacimiento,
-        password: pass
-      };
-      localStorage.setItem("usuarioRegistrado", JSON.stringify(user));
-
-      alert("✅ ¡Registro exitoso! Bienvenido/a " + usuario + ".");
-      window.location.href = "perfil.html";
-    });
-  </script>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 </html>

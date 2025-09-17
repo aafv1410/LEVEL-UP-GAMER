@@ -1,4 +1,4 @@
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Array de productos con todos los datos
 const products = [
@@ -12,21 +12,21 @@ const products = [
     { name: "Mouse Gamer Logitech G502 HERO", category: "Mouse", price: 49990, description: "Sensor de alta precisión y botones personalizables.", image: "img/mouse.png" },
     { name: "Mousepad Razer Goliathus Extended Chroma", category: "Mousepad", price: 29990, description: "Iluminación RGB personalizable con superficie uniforme.", image: "img/mousepad.jpg" },
     { name: "Polera Gamer Personalizada 'Level-Up'", category: "Poleras Personalizadas", price: 14990, description: "Camiseta cómoda y personalizable con tu gamer tag.", image: "img/polera.png" },
-    
 ];
 
 const productListContainer = document.getElementById("product-list");
 
 // Función para renderizar los productos en el DOM
 function renderProducts(productsToRender) {
-    productListContainer.innerHTML = ''; // Limpia el contenedor antes de renderizar
+    productListContainer.innerHTML = '';
     productsToRender.forEach(product => {
         const productCardHTML = `
             <div class="col-md-4 product-card" 
                  data-category="${product.category}" 
                  data-name="${product.name}" 
                  data-price="${product.price}" 
-                 data-description="${product.description}">
+                 data-description="${product.description}"
+                 data-image="${product.image}">
                 <div class="card h-100 p-3">
                     <img src="${product.image}" class="card-img-top product-image-trigger" alt="${product.name}">
                     <div class="card-body">
@@ -42,14 +42,10 @@ function renderProducts(productsToRender) {
         `;
         productListContainer.innerHTML += productCardHTML;
     });
-
-    // Vuelve a asociar los eventos a los nuevos botones e imágenes
     attachProductEventListeners();
 }
 
-// Función para asociar los eventos a los elementos del catálogo
 function attachProductEventListeners() {
-    // Evento de clic en los botones de "Agregar al carrito"
     document.querySelectorAll(".add-to-cart").forEach(button => {
         button.addEventListener("click", () => {
             const name = button.getAttribute("data-name");
@@ -58,7 +54,6 @@ function attachProductEventListeners() {
         });
     });
 
-    // Evento de clic en las imágenes para abrir el modal del producto
     document.querySelectorAll(".product-image-trigger").forEach(image => {
         image.addEventListener('click', function() {
             const productCard = this.closest('.product-card');
@@ -68,19 +63,17 @@ function attachProductEventListeners() {
                 imageSrc: this.src,
                 price: parseInt(productCard.getAttribute('data-price'))
             };
-            // Llama a la función del modal (asume que está en try.js)
             showProductModal(productData);
         });
     });
 }
 
-// Funciones del carrito (mantienen su lógica original)
 function renderCart() {
     const cartItemsContainer = document.getElementById("cart-items");
     const cartCount = document.getElementById("cart-count");
     const cartTotal = document.getElementById("cart-total");
     cartItemsContainer.innerHTML = "";
-
+    
     let total = 0;
     cart.forEach((item, index) => {
         const subtotal = item.price * item.quantity;
@@ -97,12 +90,20 @@ function renderCart() {
                 </td>
                 <td>$${item.price.toLocaleString("es-CL")}</td>
                 <td>$${subtotal.toLocaleString("es-CL")}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="removeFromCart(${index})">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
             </tr>
         `;
     });
 
     cartCount.textContent = cart.length;
     cartTotal.textContent = "$" + total.toLocaleString("es-CL") + " CLP";
+    
+    // Guarda el carrito en localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 function updateQuantity(index, quantity) {
@@ -120,13 +121,16 @@ function addToCart(name, price) {
     renderCart();
 }
 
-// Evento para vaciar el carrito
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    renderCart();
+}
+
 document.getElementById("clear-cart").addEventListener("click", () => {
     cart = [];
     renderCart();
 });
 
-// Lógica de búsqueda y filtro (ahora usan el array de productos)
 document.getElementById("searchBar").addEventListener("keyup", function () {
     const searchTerm = this.value.toLowerCase();
     const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchTerm));
@@ -138,19 +142,40 @@ function filterCategory(category) {
     renderProducts(filteredProducts);
 }
 
-// Carga inicial de los productos al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    renderProducts(products);
-});
-document.addEventListener("DOMContentLoaded", () => {
-    // Renderiza todos los productos inicialmente
-    renderProducts(products);
+// Función para mostrar el modal de detalles del producto
+function showProductModal(productData) {
+    // Asegúrate de tener los elementos del modal en tu HTML con estos IDs
+    const modalTitle = document.getElementById('productModalLabel');
+    const modalImage = document.getElementById('productModalImage');
+    const modalDescription = document.getElementById('productModalDescription');
+    const modalPrice = document.getElementById('productModalPrice');
+    const modalAddToCartBtn = document.getElementById('productModalAddToCart');
 
-    // Lee el parámetro 'categoria' de la URL
+    modalTitle.textContent = productData.name;
+    modalImage.src = productData.imageSrc;
+    modalImage.alt = productData.name;
+    modalDescription.textContent = productData.description;
+    modalPrice.textContent = `$${productData.price.toLocaleString('es-CL')} CLP`;
+
+    // Asocia la función de agregar al carrito con los datos del producto
+    modalAddToCartBtn.onclick = () => {
+        addToCart(productData.name, productData.price);
+        const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+        productModal.hide();
+    };
+
+    // Muestra el modal
+    const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+    productModal.show();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderProducts(products);
+    renderCart(); // Carga el carrito del localStorage al iniciar
+
     const urlParams = new URLSearchParams(window.location.search);
     const categoryFromUrl = urlParams.get('categoria');
 
-    // Si se encuentra una categoría en la URL, aplica el filtro
     if (categoryFromUrl) {
         filterCategory(decodeURIComponent(categoryFromUrl));
     }
