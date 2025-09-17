@@ -7,19 +7,12 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/bootstrap.bundle.min.js"></script>
-  <style>
-    .error-msg {
-      color: #ff4d4d;
-      font-size: 0.9rem;
-    }
-  </style>
 </head>
 <body class="bg-dark text-white">
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo"></a>
+      <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,55 +27,46 @@
     </div>
   </nav>
 
-  <!-- Formulario de Registro -->
-  <div class="container my-5">
+  <div class="container my-5 pt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <div class="card p-4 bg-black border border-primary rounded-4">
+        <div class="card p-4 form-section">
           <h2 class="text-center text-primary mb-4">Crear Cuenta</h2>
           <form id="registroForm">
-            
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre Completo</label>
               <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre completo" required>
             </div>
-            
             <div class="mb-3">
               <label for="correo" class="form-label">Correo Electrónico</label>
               <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com" required>
               <div id="correoError" class="error-msg"></div>
             </div>
-
             <div class="mb-3">
               <label for="usuario" class="form-label">Nombre de Usuario</label>
               <input type="text" class="form-control" id="usuario" placeholder="Tu gamer tag" required>
             </div>
-
             <div class="mb-3">
               <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
               <input type="date" class="form-control" id="fechaNacimiento" required>
               <div id="edadError" class="error-msg"></div>
             </div>
-
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="password" placeholder="Mínimo 6 caracteres" required>
               <div id="passwordError" class="error-msg"></div>
             </div>
-
             <div class="mb-3">
               <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
               <input type="password" class="form-control" id="confirmPassword" placeholder="Repite tu contraseña" required>
               <div id="confirmError" class="error-msg"></div>
             </div>
-
             <div class="form-check mb-3">
               <input class="form-check-input" type="checkbox" id="terminos" required>
               <label class="form-check-label" for="terminos">
                 Acepto los <a href="#" class="text-primary">términos y condiciones</a>
               </label>
             </div>
-
             <button type="submit" class="btn btn-levelup w-100">Registrarse</button>
           </form>
         </div>
@@ -95,6 +79,7 @@
     const passwordInput = document.getElementById("password");
     const confirmInput = document.getElementById("confirmPassword");
     const fechaInput = document.getElementById("fechaNacimiento");
+    const registroForm = document.getElementById("registroForm");
 
     const correoError = document.getElementById("correoError");
     const passwordError = document.getElementById("passwordError");
@@ -113,46 +98,47 @@
       return edad;
     }
 
-    // Validación en vivo correo
-    correoInput.addEventListener("input", function(){
-      const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!regexCorreo.test(correoInput.value.trim())){
-        correoError.textContent = "⚠️ Ingresa un correo válido (ejemplo@dominio.com)";
+    // Validación de campos en tiempo real
+    function validarCampo(input, errorElement, regex = null, mensajeError = "") {
+      const valor = input.value.trim();
+      if (valor === "") {
+        errorElement.textContent = "Este campo es obligatorio.";
+      } else if (regex && !regex.test(valor)) {
+        errorElement.textContent = mensajeError;
       } else {
-        correoError.textContent = "";
+        errorElement.textContent = "";
       }
-    });
+    }
 
-    // Validación en vivo contraseña
-    passwordInput.addEventListener("input", function(){
-      if(passwordInput.value.length < 6){
-        passwordError.textContent = "⚠️ La contraseña debe tener al menos 6 caracteres.";
+    // Validación de contraseñas
+    function validarContrasenas() {
+      if (passwordInput.value.length < 6) {
+        passwordError.textContent = "La contraseña debe tener al menos 6 caracteres.";
       } else {
         passwordError.textContent = "";
       }
-    });
-
-    // Validación en vivo confirmación contraseña
-    confirmInput.addEventListener("input", function(){
-      if(confirmInput.value !== passwordInput.value){
-        confirmError.textContent = "⚠️ Las contraseñas no coinciden.";
+      if (confirmInput.value !== passwordInput.value) {
+        confirmError.textContent = "Las contraseñas no coinciden.";
       } else {
         confirmError.textContent = "";
       }
-    });
+    }
 
-    // Validación en vivo edad
-    fechaInput.addEventListener("input", function(){
+    // Escuchar eventos en los inputs
+    correoInput.addEventListener("input", () => validarCampo(correoInput, correoError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Ingresa un correo válido."));
+    passwordInput.addEventListener("input", validarContrasenas);
+    confirmInput.addEventListener("input", validarContrasenas);
+    fechaInput.addEventListener("input", () => {
       const edad = calcularEdad(fechaInput.value);
-      if(edad < 18){
-        edadError.textContent = "⚠️ Debes tener al menos 18 años para registrarte.";
+      if (edad < 18) {
+        edadError.textContent = "Debes tener al menos 18 años para registrarte.";
       } else {
         edadError.textContent = "";
       }
     });
 
-    // Validación final al enviar
-    document.getElementById("registroForm").addEventListener("submit", function(event){
+    // Validación final al enviar el formulario
+    registroForm.addEventListener("submit", function(event) {
       event.preventDefault();
 
       const nombre = document.getElementById("nombre").value.trim();
@@ -162,29 +148,18 @@
       const confirm = confirmInput.value;
       const fechaNacimiento = fechaInput.value;
 
-      const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // Realizar todas las validaciones
+      const esCorreoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+      const esPasswordValido = pass.length >= 6;
+      const contrasenasCoinciden = pass === confirm;
+      const esMayorDeEdad = calcularEdad(fechaNacimiento) >= 18;
 
-      if(pass.length < 6){
-        alert("⚠️ La contraseña debe tener al menos 6 caracteres.");
+      if (!esCorreoValido || !esPasswordValido || !contrasenasCoinciden || !esMayorDeEdad) {
+        alert("Por favor, corrige los errores en el formulario antes de continuar.");
         return;
       }
 
-      if(!regexCorreo.test(correo)){
-        alert("⚠️ Ingresa un correo electrónico válido.");
-        return;
-      }
-
-      if(pass !== confirm){
-        alert("⚠️ Las contraseñas no coinciden.");
-        return;
-      }
-
-      if(calcularEdad(fechaNacimiento) < 18){
-        alert("⚠️ Debes ser mayor de 18 años para registrarte.");
-        return;
-      }
-
-      // Crear objeto usuario
+      // Crear objeto de usuario y guardar en localStorage
       const user = {
         nombre: nombre,
         correo: correo,
@@ -192,12 +167,10 @@
         fechaNacimiento: fechaNacimiento,
         password: pass
       };
-
-      // Guardar en localStorage
       localStorage.setItem("usuarioRegistrado", JSON.stringify(user));
 
-      alert("✅ Registro exitoso. Bienvenido/a " + usuario + "!");
-      window.location.href = "perfil.html"; // Redirigir a perfil
+      alert("✅ ¡Registro exitoso! Bienvenido/a " + usuario + ".");
+      window.location.href = "perfil.html";
     });
   </script>
 

@@ -17,11 +17,11 @@
 
     </head>
 
-    <body>
+    <body >
 
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo"></a>
+                <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </nav>
-
+        
 
         <div class="container my-4">
             <input type="text" id="searchBar" class="form-control" placeholder="Buscar producto por nombre...">
@@ -84,7 +84,7 @@
 
                 <div class="col-md-4 product-card" data-category="Juegos de Mesa" data-name="Catan">
                     <div class="card h-100 p-3">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/2/2d/Catan-2015-boxart.jpg"
+                        <img src="img/catan.png"
                             class="card-img-top" alt="Catan">
                         <div class="card-body">
                             <h5 class="card-title">Catan</h5>
@@ -95,10 +95,11 @@
                         </div>
                     </div>
                 </div>
+                
 
                 <div class="col-md-4 product-card" data-category="Juegos de Mesa" data-name="Carcassonne">
                     <div class="card h-100 p-3">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/4/46/Carcassonne-game.jpg"
+                        <img src="img/carcasonne.png"
                             class="card-img-top" alt="Carcassonne">
                         <div class="card-body">
                             <h5 class="card-title">Carcassonne</h5>
@@ -127,7 +128,7 @@
                 <div class="col-md-4 product-card" data-category="Accesorios"
                     data-name="Auriculares Gamer HyperX Cloud II">
                     <div class="card h-100 p-3">
-                        <img src="img/audifonos.jpg" class="card-img-top" alt="Auriculares HyperX">
+                        <img src="img/audifonos.png" class="card-img-top" alt="Auriculares HyperX">
                         <div class="card-body">
                             <h5 class="card-title">Auriculares Gamer HyperX Cloud II</h5>
                             <p class="card-text">Sonido envolvente de calidad con micrófono desmontable.</p>
@@ -141,7 +142,7 @@
 
                 <div class="col-md-4 product-card" data-category="Consolas" data-name="PlayStation 5">
                     <div class="card h-100 p-3">
-                        <img src="img/" class="card-img-top" alt="PlayStation 5">
+                        <img src="img/ps55.png" class="card-img-top" alt="PlayStation 5">
                         <div class="card-body">
                             <h5 class="card-title">PlayStation 5</h5>
                             <p class="card-text">La consola de última generación de Sony.</p>
@@ -169,7 +170,7 @@
                 <div class="col-md-4 product-card" data-category="Sillas Gamers"
                     data-name="Silla Gamer Secretlab Titan">
                     <div class="card h-100 p-3">
-                        <img src="img/silla.jpg" class="card-img-top" alt="Silla Gamer Secretlab Titan">
+                        <img src="img/silla.png" class="card-img-top"  alt="Silla Gamer Secretlab Titan">
                         <div class="card-body">
                             <h5 class="card-title">Silla Gamer Secretlab Titan</h5>
                             <p class="card-text">Diseñada para máximo confort y soporte ergonómico.</p>
@@ -182,7 +183,7 @@
 
                 <div class="col-md-4 product-card" data-category="Mouse" data-name="Mouse Gamer Logitech G502 HERO">
                     <div class="card h-100 p-3">
-                        <img src="" class="card-img-top" alt="Mouse Logitech G502">
+                        <img src="img/mouse.png" class="card-img-top" alt="Mouse Logitech G502">
                         <div class="card-body">
                             <h5 class="card-title">Mouse Gamer Logitech G502 HERO</h5>
                             <p class="card-text">Sensor de alta precisión y botones personalizables.</p>
@@ -196,7 +197,7 @@
                 <div class="col-md-4 product-card" data-category="Mousepad"
                     data-name="Mousepad Razer Goliathus Extended Chroma">
                     <div class="card h-100 p-3">
-                        <img src="img/mousepad.png" class="card-img-top" alt="Mousepad Razer">
+                        <img src="img/mousepad.jpg" class="card-img-top" class="imagen-pequeña" alt="Mousepad Razer">
                         <div class="card-body">
                             <h5 class="card-title">Mousepad Razer Goliathus Extended Chroma</h5>
                             <p class="card-text">Iluminación RGB personalizable con superficie uniforme.</p>
@@ -226,7 +227,6 @@
             </div>
         </div>
 
-
         <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content bg-dark text-white">
@@ -255,11 +255,24 @@
                 </div>
             </div>
         </div>
+        
 
 
 
         <script src="js/app.js"></script>
         <script src="js/try.js"></script>
     </body>
+
+    <footer class="bg-dark text-white mt-auto py-3" style="position:down; left:0; bottom:0; width:100%; z-index:100;">
+        <div class="text-center">
+            <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
+            <p>
+                <a href="#">Facebook</a> |
+                <a href="#">Instagram</a> |
+                <a href="#">Twitter</a>
+            </p>
+            <p>Contacto: soporte@levelupgamer.cl</p>
+        </div>
+    </footer>
 
 </html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level-Up Gamer - Inicio</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="bg-dark text-white">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="registro.html">Registrarse</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdown" role="button"
+                        data-bs-toggle="dropdown">
+                        Catálogo
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Juegos%20de%20Mesa" onclick="filterCategory('Juegos de Mesa')">Juegos de
+                                Mesa</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Accesorios" onclick="filterCategory('Accesorios')">Accesorios</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Consolas" onclick="filterCategory('Consolas')">Consolas</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Computadores%20Gamers"
+                                onclick="filterCategory('Computadores Gamers')">Computadores Gamers</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Sillas%20Gamers" onclick="filterCategory('Sillas Gamers')">Sillas
+                                Gamers</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Mouse" onclick="filterCategory('Mouse')">Mouse</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Mousepad" onclick="filterCategory('Mousepad')">Mousepad</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Poleras%20Personalizadas" onclick="filterCategory('Poleras Personalizadas')">Poleras
+                                Personalizadas</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html?categoria=Polerones%20Personalizados"
+                                onclick="filterCategory('Polerones Personalizados')">Polerones Personalizados</a></li>
+                        <li><a class="dropdown-item" href="catalogo.html" onclick="filterCategory('all')">Ver Todo</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
+                <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+                <li class="nav-item">
+                    <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
+                        🛒 Carrito <span id="cart-count" class="badge bg-danger">0</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="banner">
+  Utiliza el Correo de <strong>DoucUC</strong> para un 20% de descuento para toda la tienda de por vida!
+  (<em>no acumulable con otros descuentos</em>) 
+</div>
+
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Bienvenido a Level-Up Gamer 🎮</h1>
+    <p>Tu tienda gamer con lo mejor en consolas, accesorios, PCs y más</p>
+    <a href="catalogo.html" class="btn btn-levelup btn-lg">Explorar Catálogo</a>
+  </header>
+
+  <!-- Banner tipo Carrusel -->
+<div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <!-- Banner 1 -->
+    <div class="carousel-item active">
+      <img src="img/gaming.png" class="d-block w-100" alt="Banner 1">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>🎮 Novedades Gamer</h5>
+        <p>Explora lo último en juegos y accesorios.</p>
+      </div>
+    </div>
+    <!-- Banner 2 -->
+    <div class="carousel-item">
+      <img src="img/juegos_mesa.png" class="d-block w-100" alt="Banner 2">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>🔥 Juegos de Mesa</h5>
+        <p>Aprovecha los mejores juegos de mesa del Mundo.</p>
+      </div>
+    </div>
+    <!-- Banner 3 -->
+    <div class="carousel-item">
+      <img src="img/comunidad.png" class="d-block w-100" alt="Banner 3">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>📰 Noticias del Mundo Gamer</h5>
+        <p>Entérate de las últimas tendencias y lanzamientos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controles -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+  <!-- Indicadores -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
+  </div>
+</div>
+
+  <!-- Productos Destacados -->
+  <section class="container my-5">
+    <h2 class="section-title">🔥 Productos Destacados</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/ps55.png" class="card-img-top" alt="PS5">
+          <div class="card-body">
+            <h5 class="card-title">PlayStation 5</h5>
+            <p class="card-text">La consola más potente de Sony, experiencia next-gen.</p>
+            <a href="catalogo.html?categoria=Consolas" class="btn btn-levelup">Ver más</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/gabinete.png" class="card-img-top" alt="PC Gamer">
+          <div class="card-body">
+            <h5 class="card-title">PC Gamer</h5>
+            <p class="card-text">Rendimiento extremo para tus juegos favoritos.</p>
+            <a href="catalogo.html?categoria=Computadores Gamers" class="btn btn-levelup">Ver más</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bg-dark text-white border-light h-100">
+          <img src="img/silla.png" class="card-img-top" alt="Silla Gamer">
+          <div class="card-body">
+            <h5 class="card-title">Silla Gamer</h5>
+            <p class="card-text">Comodidad y estilo para largas sesiones de juego.</p>
+            <a href="catalogo.html?categoria=Sillas Gamers" class="btn btn-levelup">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white mt-auto py-3" style="position:down; left:0; bottom:0; width:100%; z-index:100;">
+        <div class="text-center">
+            <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
+            <p>
+                <a href="#">Facebook</a> |
+                <a href="#">Instagram</a> |
+                <a href="#">Twitter</a>
+            </p>
+            <p>Contacto: soporte@levelupgamer.cl</p>
+            <p>Servicio tecnico
+              <a href="https://web.whatsapp.com">+569 8401 7204</a> 
+              </p>
+        </div>
+    </footer>
+</body>
+</html>
