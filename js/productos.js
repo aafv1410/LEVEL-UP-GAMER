@@ -2,16 +2,16 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Array de productos con todos los datos
 const products = [
-    { name: "Catan", category: "Juegos de Mesa", price: 29990, description: "Juego de estrategia para 3-4 jugadores.", image: "img/catan.png" },
-    { name: "Carcassonne", category: "Juegos de Mesa", price: 24990, description: "Juego de colocación de fichas en un paisaje medieval.", image: "img/carcasonne.png" },
-    { name: "Controlador Xbox Series X", category: "Accesorios", price: 59990, description: "Experiencia cómoda con botones mapeables y respuesta táctil mejorada.", image: "img/control.png" },
-    { name: "Auriculares Gamer HyperX Cloud II", category: "Accesorios", price: 79990, description: "Sonido envolvente de calidad con micrófono desmontable.", image: "img/audifonos.png" },
-    { name: "PlayStation 5", category: "Consolas", price: 549990, description: "La consola de última generación de Sony.", image: "img/ps55.png" },
-    { name: "PC Gamer ASUS ROG Strix", category: "Computadores Gamers", price: 1299990, description: "Potente equipo diseñado para los gamers más exigentes.", image: "img/gabinete.png" },
-    { name: "Silla Gamer Secretlab Titan", category: "Sillas Gamers", price: 349990, description: "Diseñada para máximo confort y soporte ergonómico.", image: "img/silla.png" },
-    { name: "Mouse Gamer Logitech G502 HERO", category: "Mouse", price: 49990, description: "Sensor de alta precisión y botones personalizables.", image: "img/mouse.png" },
-    { name: "Mousepad Razer Goliathus Extended Chroma", category: "Mousepad", price: 29990, description: "Iluminación RGB personalizable con superficie uniforme.", image: "img/mousepad.jpg" },
-    { name: "Polera Gamer Personalizada 'Level-Up'", category: "Poleras Personalizadas", price: 14990, description: "Camiseta cómoda y personalizable con tu gamer tag.", image: "img/polera.png" },
+    { name: "Catan", category: "Juegos de Mesa", price: 29990, description: "Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches de juego en familia o con amigos", image: "img/catan.png" },
+    { name: "Carcassonne", category: "Juegos de Mesa", price: 24990, description: "Un juego de colocación de fichas donde los jugadores construyen el paisaje alrededor de la fortaleza medieval de Carcassonne. Ideal para 2-5 jugadores y fácil de aprender", image: "img/carcasonne.png" },
+    { name: "Controlador Xbox Series X", category: "Accesorios", price: 59990, description: "Ofrece una experiencia de juego cómoda con botones mapeables y una respuesta táctil mejorada. Compatible con consolas Xbox y PC.", image: "img/control.png" },
+    { name: "Auriculares Gamer HyperX Cloud II", category: "Accesorios", price: 79990, description: "Proporcionan un sonido envolvente de calidad con un micrófono desmontable y almohadillas de espuma viscoelástica para mayor comodidad durante largas sesiones de juego", image: "img/audifonos.png" },
+    { name: "PlayStation 5", category: "Consolas", price: 549990, description: "La consola de última generación de Sony, que ofrece gráficos impresionantes y tiempos de carga ultrarrápidos para una experiencia de juego inmersiva", image: "img/ps55.png" },
+    { name: "PC Gamer ASUS ROG Strix", category: "Computadores Gamers", price: 1299990, description: "Un potente equipo diseñado para los gamers más exigentes, equipado con los últimos componentes para ofrecer un rendimiento excepcional en cualquier juego", image: "img/gabinete.png" },
+    { name: "Silla Gamer Secretlab Titan", category: "Sillas Gamers", price: 349990, description: "Diseñada para el máximo confort, esta silla ofrece un soporte ergonómico y personalización ajustable para sesiones de juego prolongadas.", image: "img/silla.png" },
+    { name: "Mouse Gamer Logitech G502 HERO", category: "Mouse", price: 49990, description: "Con sensor de alta precisión y botones personalizables, este mouse es ideal para gamers que buscan un control preciso y personalización.", image: "img/mouse.png" },
+    { name: "Mousepad Razer Goliathus Extended Chroma", category: "Mousepad", price: 29990, description: "Ofrece un área de juego amplia con iluminación RGB personalizable, asegurando una superficie suave y uniforme para el movimiento del mouse.", image: "img/mousepad.jpg" },
+    { name: "Polera Gamer Personalizada 'Level-Up'", category: "Poleras Personalizadas", price: 14990, description: "Una camiseta cómoda y estilizada, con la posibilidad de personalizarla con tu gamer tag o diseño favorito.", image: "img/polera.png" },
 ];
 
 const productListContainer = document.getElementById("product-list");
@@ -22,11 +22,11 @@ function renderProducts(productsToRender) {
     productsToRender.forEach(product => {
         const productCardHTML = `
             <div class="col-md-4 product-card" 
-                 data-category="${product.category}" 
-                 data-name="${product.name}" 
-                 data-price="${product.price}" 
-                 data-description="${product.description}"
-                 data-image="${product.image}">
+                data-category="${product.category}" 
+                data-name="${product.name}" 
+                data-price="${product.price}" 
+                data-description="${product.description}"
+                data-image="${product.image}">
                 <div class="card h-100 p-3">
                     <img src="${product.image}" class="card-img-top product-image-trigger" alt="${product.name}">
                     <div class="card-body">
