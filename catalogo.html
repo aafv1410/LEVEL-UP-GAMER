@@ -16,35 +16,37 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <a class="nav-link" href="perfil.html">Puntos LevelUp: <span id="nav-user-points"
+                    class="fw-bold text-warning">0</span></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="registro.html">Registrarse</a></li>
-                    <li class="nav-item dropdown">
+
                         <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdown" role="button"
                             data-bs-toggle="dropdown">
                             Catálogo
                         </a>
+                        <li class="nav-item"><a class="nav-link" href="registro.html">Registrarse</a></li>
+                    <li class="nav-item dropdown">
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#" onclick="filterCategory('Juegos de Mesa')">Juegos de
+                            <li><a class="dropdown-item" href="catalogo.html?categoria=Juegos%20de%20Mesa">Juegos de
                                     Mesa</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="filterCategory('Accesorios')">Accesorios</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="filterCategory('Consolas')">Consolas</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="filterCategory('Computadores Gamers')">Computadores Gamers</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="filterCategory('Sillas Gamers')">Sillas
+                            <li><a class="dropdown-item" href="catalogo.html?categoria=Accesorios">Accesorios</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?categoria=Consolas">Consolas</a></li>
+                            <li><a class="dropdown-item"
+                                    href="catalogo.html?categoria=Computadores%20Gamers">Computadores Gamers</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?categoria=Sillas%20Gamers">Sillas
                                     Gamers</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="filterCategory('Mouse')">Mouse</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="filterCategory('Mousepad')">Mousepad</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="filterCategory('Poleras Personalizadas')">Poleras Personalizadas</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="filterCategory('Polerones Personalizados')">Polerones Personalizados</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="filterCategory('all')">Ver Todo</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?categoria=Mouse">Mouse</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?categoria=Mousepad">Mousepad</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?categoria=Poleras%20Personalizadas">Poleras
+                                    Personalizadas</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html">Ver Todo</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
+
+                    <li class="nav-item" id="nav-mi-cuenta"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
+                    <li class="nav-item" id="nav-iniciar-sesion"><a class="nav-link" href="inicio.html">Iniciar
+                            sesión</a></li>
                     <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
                     <li class="nav-item">
                         <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
@@ -61,11 +63,11 @@
     </div>
 
 
-        <div class="container my-4">
-            <h2 class="mb-4">Catálogo de Productos</h2>
-            <div class="row g-4" id="product-list">
-            </div>
+    <div class="container my-4">
+        <h2 class="mb-4">Catálogo de Productos</h2>
+        <div class="row g-4" id="product-list">
         </div>
+    </div>
 
 
     <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
@@ -156,6 +158,9 @@
                 <a href="#">Twitter</a>
             </p>
             <p>Contacto: soporte@levelupgamer.cl</p>
+            <p>Servicio tecnico
+                <a href="https://web.whatsapp.com">+569 8401 7204</a>
+            </p>
         </div>
     </footer>
 </body>
