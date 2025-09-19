@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Script auth.js cargado y ejecutándose.');
 
+    // --- LÓGICA PARA MOSTRAR/OCULTAR ENLACES DE NAVEGACIÓN ---
     function isLoggedIn() {
         return localStorage.getItem('isLoggedIn') === 'true';
     }
@@ -19,7 +20,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Lógica del formulario de registro
+    // --- LÓGICA DEL FORMULARIO DE INICIO DE SESIÓN ---
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const correoInput = document.getElementById("correoLogin");
+            const passwordInput = document.getElementById("passwordLogin");
+            
+            // Validación de Correo con dominios permitidos
+            const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+            const isValidEmail = allowedDomains.some(domain => correoInput.value.endsWith(domain));
+            
+            if (!isValidEmail) {
+                alert('Correo no válido. Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.');
+                return;
+            }
+
+            // Validación de Contraseña con rango de caracteres
+            if (passwordInput.value.length < 4 || passwordInput.value.length > 10) {
+                alert('La contraseña debe tener entre 4 y 10 caracteres.');
+                return;
+            }
+            
+            // Simulación de login: Si es admin, va al panel. Sino, va a su perfil.
+            if (correoInput.value === 'admin@duoc.cl' && passwordInput.value === 'admin123') {
+                alert('¡Bienvenido, Administrador!');
+                login('admin'); // Pasa el rol 'admin'
+            } else {
+                 const usuarioRegistrado = JSON.parse(localStorage.getItem("usuarioRegistrado"));
+                 if (usuarioRegistrado && usuarioRegistrado.correo === correoInput.value && usuarioRegistrado.password === passwordInput.value) {
+                     alert("✅ ¡Inicio de sesión exitoso! Bienvenido/a " + usuarioRegistrado.usuario + ".");
+                     login('cliente'); // Pasa el rol 'cliente'
+                 } else {
+                     alert("❌ Correo o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+                 }
+            }
+        });
+    }
+
+    // --- LÓGICA DEL FORMULARIO DE REGISTRO ---
     const registroForm = document.getElementById("registroForm");
     if (registroForm) {
         const correoInput = document.getElementById("correo");
@@ -42,20 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return edad;
         }
 
-        function validarCampo(input, errorElement, regex = null, mensajeError = "") {
-            const valor = input.value.trim();
-            if (valor === "") {
-                errorElement.textContent = "Este campo es obligatorio.";
-            } else if (regex && !regex.test(valor)) {
-                errorElement.textContent = mensajeError;
-            } else {
-                errorElement.textContent = "";
-            }
-        }
-
         function validarContrasenas() {
-            if (passwordInput.value.length < 6) {
-                passwordError.textContent = "La contraseña debe tener al menos 6 caracteres.";
+            if (passwordInput.value.length < 4 || passwordInput.value.length > 10) {
+                passwordError.textContent = "La contraseña debe tener entre 4 y 10 caracteres.";
             } else {
                 passwordError.textContent = "";
             }
@@ -66,7 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        correoInput.addEventListener("input", () => validarCampo(correoInput, correoError, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Ingresa un correo válido."));
+        correoInput.addEventListener("input", () => {
+             const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+             const isValidEmail = allowedDomains.some(domain => correoInput.value.endsWith(domain));
+             if(!isValidEmail && correoInput.value.length > 0) {
+                correoError.textContent = "Dominio no permitido.";
+             } else {
+                correoError.textContent = "";
+             }
+        });
         passwordInput.addEventListener("input", validarContrasenas);
         confirmInput.addEventListener("input", validarContrasenas);
         fechaInput.addEventListener("input", () => {
@@ -81,64 +119,42 @@ document.addEventListener('DOMContentLoaded', () => {
         registroForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const nombre = document.getElementById("nombre").value.trim();
-            const correo = correoInput.value.trim();
-            const usuario = document.getElementById("usuario").value.trim();
-            const pass = passwordInput.value;
-            const confirm = confirmInput.value;
-            const fechaNacimiento = fechaInput.value;
-
-            const esCorreoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
-            const esPasswordValido = pass.length >= 6;
-            const contrasenasCoinciden = pass === confirm;
-            const esMayorDeEdad = calcularEdad(fechaNacimiento) >= 18;
-
-            if (!esCorreoValido || !esPasswordValido || !contrasenasCoinciden || !esMayorDeEdad) {
-                alert("Por favor, corrige los errores en el formulario antes de continuar.");
+            // Re-validar todo antes de enviar
+            validarContrasenas();
+            if(correoError.textContent || passwordError.textContent || confirmError.textContent || edadError.textContent) {
+                alert("Por favor, corrige los errores en el formulario.");
                 return;
             }
 
             const user = {
-                nombre: nombre,
-                correo: correo,
-                usuario: usuario,
-                fechaNacimiento: fechaNacimiento,
-                password: pass
+                nombre: document.getElementById("nombre").value.trim(),
+                correo: correoInput.value.trim(),
+                usuario: document.getElementById("usuario").value.trim(),
+                fechaNacimiento: fechaInput.value,
+                password: passwordInput.value
             };
             localStorage.setItem("usuarioRegistrado", JSON.stringify(user));
 
-            alert("✅ ¡Registro exitoso! Bienvenido/a " + usuario + ".");
-            login();
+            alert("✅ ¡Registro exitoso! Bienvenido/a " + user.usuario + ".");
+            login('cliente');
         });
     }
-
-    // Lógica del formulario de inicio de sesión
-    const loginForm = document.getElementById("loginForm");
-    if (loginForm) {
-        loginForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const correo = document.getElementById("correoLogin").value.trim();
-            const password = document.getElementById("passwordLogin").value;
-            const usuarioRegistrado = JSON.parse(localStorage.getItem("usuarioRegistrado"));
-
-            if (usuarioRegistrado && usuarioRegistrado.correo === correo && usuarioRegistrado.password === password) {
-                alert("✅ ¡Inicio de sesión exitoso! Bienvenido/a " + usuarioRegistrado.usuario + ".");
-                login();
-            } else {
-                alert("❌ Correo o contraseña incorrectos. Por favor, inténtalo de nuevo.");
-            }
-        });
-    }
-
 });
 
-function login() {
+// --- FUNCIONES GLOBALES DE LOGIN/LOGOUT ---
+function login(role) {
     localStorage.setItem('isLoggedIn', 'true');
-    window.location.href = "perfil.html";
+    localStorage.setItem('userRole', role); // Guardamos el rol
+    
+    if (role === 'admin') {
+        window.location.href = "admin.html";
+    } else {
+        window.location.href = "perfil.html";
+    }
 }
 
 function logout() {
     localStorage.removeItem('isLoggedIn');
-    window.location.reload();
+    localStorage.removeItem('userRole');
+    window.location.href = "index.html";
 }
