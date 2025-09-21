@@ -6,6 +6,9 @@
     <title>Registro - Level-Up Gamer</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-dark text-white">
 
@@ -20,7 +23,7 @@
                     <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
                     <li class="nav-item" id="nav-mi-cuenta"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
                     <li class="nav-item" id="nav-iniciar-sesion"><a class="nav-link" href="inicio.html">Iniciar Sesión</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="registro.html">Registrarse</a></li>
+                    <li class="nav-item" id="nav-registrarse"><a class="nav-link active" href="registro.html">Registrarse</a></li>
                     <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
                 </ul>
             </div>
@@ -40,7 +43,7 @@
                         <div class="mb-3">
                             <label for="correo" class="form-label">Correo Electrónico</label>
                             <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com" required>
-                            <div id="correoError" class="error-msg"></div>
+                            <div id="correoError" class="error-msg text-danger"></div>
                         </div>
                         <div class="mb-3">
                             <label for="usuario" class="form-label">Nombre de Usuario</label>
@@ -49,17 +52,17 @@
                         <div class="mb-3">
                             <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
                             <input type="date" class="form-control" id="fechaNacimiento" required>
-                            <div id="edadError" class="error-msg"></div>
+                            <div id="edadError" class="error-msg text-danger"></div>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Mínimo 6 caracteres" required>
-                            <div id="passwordError" class="error-msg"></div>
+                            <input type="password" class="form-control" id="password" placeholder="Mínimo 4 y máximo 10 caracteres" required>
+                            <div id="passwordError" class="error-msg text-danger"></div>
                         </div>
                         <div class="mb-3">
                             <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
                             <input type="password" class="form-control" id="confirmPassword" placeholder="Repite tu contraseña" required>
-                            <div id="confirmError" class="error-msg"></div>
+                            <div id="confirmError" class="error-msg text-danger"></div>
                         </div>
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" id="terminos" required>
@@ -75,6 +78,6 @@
     </div>
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/auth.js"></script>
+    <script src="js/appes.js"></script>
 </body>
 </html>

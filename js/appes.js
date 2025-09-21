@@ -1,7 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- LÓGICA COMPARTIDA PARA GESTIÓN DE SESIÓN Y VISTA DEL NAVBAR ---
+    // --- FUNCIONES DE UTILIDAD PARA ERRORES ---
+    function mostrarError(elemento, mensaje) {
+        const errorElement = document.getElementById(elemento);
+        if (errorElement) {
+            errorElement.textContent = mensaje;
+            errorElement.style.display = 'block';
+        }
+    }
 
+    function limpiarErrores() {
+        const errorElements = document.querySelectorAll('.error-msg');
+        errorElements.forEach(el => {
+            el.textContent = '';
+            el.style.display = 'none';
+        });
+    }
+
+    // --- LÓGICA COMPARTIDA PARA GESTIÓN DE SESIÓN Y VISTA DEL NAVBAR ---
     const navMiCuenta = document.getElementById('nav-mi-cuenta');
     const navIniciarSesion = document.getElementById('nav-iniciar-sesion');
     const navRegistrarse = document.getElementById('nav-registrarse');
@@ -28,11 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarNavbar();
 
     // --- LÓGICA DEL FORMULARIO DE INICIO DE SESIÓN ---
-
     const loginForm = document.getElementById("loginForm");
     if (loginForm) {
         loginForm.addEventListener("submit", function(event) {
             event.preventDefault();
+            limpiarErrores();
 
             const correo = document.getElementById("correoLogin").value.trim();
             const password = document.getElementById("passwordLogin").value;
@@ -46,20 +62,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const usuarioEncontrado = usuarios.find(user => user.correo === correo && user.password === password);
 
             if (usuarioEncontrado) {
-                alert("✅ ¡Inicio de sesión exitoso! Bienvenido/a " + usuarioEncontrado.usuario + ".");
                 login(usuarioEncontrado);
             } else {
-                alert("❌ Correo o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+                mostrarError('loginError', '❌ Correo o contraseña incorrectos.');
             }
         });
     }
 
     // --- LÓGICA DEL FORMULARIO DE REGISTRO ---
-
     const registroForm = document.getElementById("registroForm");
     if (registroForm) {
         registroForm.addEventListener("submit", function(event) {
             event.preventDefault();
+            limpiarErrores();
 
             const nombre = document.getElementById("nombre").value.trim();
             const correo = document.getElementById("correo").value.trim();
@@ -67,19 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const fechaNacimiento = document.getElementById("fechaNacimiento").value;
             const password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("confirmPassword").value;
+            
+            let tieneErrores = false;
 
             const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
             if (!allowedDomains.some(domain => correo.endsWith(domain))) {
-                alert('Correo no válido. Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.');
-                return;
+                mostrarError('correoError', 'Correo no válido. Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.');
+                tieneErrores = true;
             }
             if (password.length < 4 || password.length > 10) {
-                alert('La contraseña debe tener entre 4 y 10 caracteres.');
-                return;
+                mostrarError('passwordError', 'La contraseña debe tener entre 4 y 10 caracteres.');
+                tieneErrores = true;
             }
             if (password !== confirmPassword) {
-                alert('Las contraseñas no coinciden.');
-                return;
+                mostrarError('confirmError', 'Las contraseñas no coinciden.');
+                tieneErrores = true;
             }
             const hoy = new Date();
             const nacimiento = new Date(fechaNacimiento);
@@ -89,16 +106,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 edad--;
             }
             if (edad < 18) {
-                alert("Debes tener al menos 18 años para registrarte.");
-                return;
+                mostrarError('edadError', 'Debes tener al menos 18 años para registrarte.');
+                tieneErrores = true;
             }
             
             const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
             const correoExistente = usuarios.find(user => user.correo === correo);
             if (correoExistente) {
-                alert("❌ Este correo electrónico ya está registrado. Por favor, inicia sesión.");
+                mostrarError('correoError', 'Este correo electrónico ya está registrado.');
+                tieneErrores = true;
+            }
+            
+            if (tieneErrores) {
                 return;
             }
+
             const newUser = {
                 nombre,
                 correo,
@@ -162,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     usuarioLogeado.puntos += 100;
                     updateLevel();
                     updateUI();
-                    alert('¡Has ganado 100 puntos LevelUp!');
                 });
             }
 
@@ -173,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         usuarioLogeado.puntos -= pointsToRedeem;
                         updateLevel();
                         updateUI();
-                        alert('¡Puntos canjeados! Se ha aplicado un cupón de descuento.');
                     } else {
                         alert('No tienes suficientes puntos para canjear.');
                     }
@@ -189,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 copyReferralBtn.addEventListener('click', () => {
                     if(referralCodeEl) {
                         navigator.clipboard.writeText(referralCodeEl.value);
-                        alert('Código copiado: ' + referralCodeEl.value);
                     }
                 });
             }
@@ -215,10 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     localStorage.setItem('usuarios', JSON.stringify(todosLosUsuarios));
                     localStorage.setItem('usuarioLogeado', JSON.stringify(todosLosUsuarios[index]));
-                    alert('✅ Información actualizada con éxito');
                     location.reload();
-                } else {
-                    alert('Error al actualizar: usuario no encontrado.');
                 }
             });
 
@@ -229,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     categoriasSeleccionadas.push(checkbox.value);
                 });
                 localStorage.setItem('preferenciasUsuario', JSON.stringify({ categorias: categoriasSeleccionadas }));
-                alert('✅ Preferencias guardadas con éxito');
             });
 
             const preferencias = JSON.parse(localStorage.getItem('preferenciasUsuario')) || {};
