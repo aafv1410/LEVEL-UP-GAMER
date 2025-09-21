@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Productos</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
-        
-        <a id="nav-puntos-container" class="nav-link text-white ms-3 d-none d-lg-block" href="perfil.html">
-            Puntos LevelUp: <span id="nav-user-points" class="fw-bold text-warning">0</span>
-        </a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item" id="nav-iniciar-sesion"><a class="nav-link" href="inicio.html">Iniciar sesión</a></li>
-                <li class="nav-item" id="nav-registrarse"><a class="nav-link" href="registro.html">Registrarse</a></li>
-                
-                <li class="nav-item" id="nav-mi-cuenta"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
-                <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
-                <li class="nav-item">
-                    <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
-                        🛒 Carrito <span id="cart-count" class="badge bg-danger">0</span>
-                    </button>
-                </li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
+
+            <a id="nav-puntos-container" class="nav-link text-white ms-3 d-none d-lg-block" href="perfil.html">
+                Puntos LevelUp: <span id="nav-user-points" class="fw-bold text-warning">0</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" id="nav-iniciar-sesion"><a class="nav-link" href="inicio.html">Iniciar sesión</a></li>
+                    <li class="nav-item" id="nav-registrarse"><a class="nav-link" href="registro.html">Registrarse</a></li>
+                    <li class="nav-item" id="nav-mi-cuenta"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Catálogo
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="catalogo.html?category=Juegos de Mesa">Juegos de Mesa</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?category=Accesorios">Accesorios</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?category=Consolas">Consolas</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?category=Computadores Gamers">Computadores Gamers</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?category=Sillas Gamers">Sillas Gamers</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?category=Mouse">Mouse</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?category=Mousepad">Mousepad</a></li>
+                            <li><a class="dropdown-item" href="catalogo.html?category=Poleras Personalizadas">Poleras Personalizadas</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="catalogo.html">Ver Todo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            🛒 Carrito <span id="cart-count" class="badge bg-danger">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <div class="container my-4">
         <input type="text" id="searchBar" class="form-control" placeholder="Buscar producto por nombre...">
     </div>
-
 
     <div class="container my-4">
         <h2 class="mb-4">Catálogo de Productos</h2>
@@ -52,11 +64,10 @@
         </div>
     </div>
 
-
     <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content bg-dark text-white">
-                <div class="modal-header">
+                <div class="modal-header border-bottom-0">
                     <h5 class="modal-title">🛒 Carrito de Compras</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
@@ -66,60 +77,67 @@
                             <tr>
                                 <th>Producto</th>
                                 <th>Cantidad</th>
-                                <th>Precio</th>
+                                <th>Precio Unitario</th>
                                 <th>Subtotal</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
-                        <tbody id="cart-items"></tbody>
+                        <tbody id="cart-items">
+                        </tbody>
                     </table>
-                    <h4 class="text-end">Total: <span id="cart-total">$0 CLP</span></h4>
+                    <h4 class="text-end mt-3">Total: <span id="cart-total"></span></h4>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger" id="clear-cart">Vaciar Carrito</button>
-                    <button class="btn btn-success">Finalizar Compra</button>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger" id="clear-cart">Vaciar Carrito</button>
+                    <a href="pago.html" class="btn btn-success">Finalizar Compra</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content bg-dark text-white">
                 <div class="modal-header">
                     <h5 class="modal-title" id="productModalLabel"></h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-center">
-                    <img id="modal-product-image" src="" alt="" class="img-fluid mb-3">
-                    <p id="modal-product-description"></p>
-                    <p class="fw-bold text-success" id="modal-product-price"></p>
-                    <button id="modal-add-to-cart" class="btn btn-levelup w-100">Agregar al carrito</button>
-
-                    <hr class="text-white-50">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <img id="modal-product-image" class="img-fluid rounded shadow" alt="Producto">
+                        </div>
+                        <div class="col-md-6">
+                            <p id="modal-product-description"></p>
+                            <h4 id="modal-product-price" class="text-success fw-bold"></h4>
+                            <div class="d-flex justify-content-center align-items-center mb-3">
+                                <h6>Calificación:</h6>
+                                <div id="rating-stars" class="ms-2"></div>
+                            </div>
+                            <button id="modal-add-to-cart" class="btn btn-levelup w-100">Agregar al carrito</button>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    
                     <div class="row">
                         <div class="col-12">
-                            <h6 class="text-center">Calificación y Comentarios</h6>
-                            <div class="rating-stars text-center mb-3" id="rating-stars">
-                                <span class="star" data-value="1">★</span>
-                                <span class="star" data-value="2">★</span>
-                                <span class="star" data-value="3">★</span>
-                                <span class="star" data-value="4">★</span>
-                                <span class="star" data-value="5">★</span>
-                            </div>
-                            <div id="comments-section" class="mb-3">
-                            </div>
+                            <h5 class="mb-3">Comentarios y Valoraciones</h5>
+                            
+                            <div id="comments-section" class="mb-4">
+                                </div>
+
                             <form id="comment-form">
-                                <div class="mb-2">
-                                    <input type="text" class="form-control form-control-sm" id="comment-author"
-                                        placeholder="Tu nombre" required>
+                                <h6 class="mb-2">Deja un comentario:</h6>
+                                <div class="mb-3">
+                                    <label for="comment-author" class="form-label">Tu nombre</label>
+                                    <input type="text" class="form-control bg-secondary text-white" id="comment-author" required>
                                 </div>
-                                <div class="mb-2">
-                                    <textarea class="form-control form-control-sm" id="comment-text" rows="2"
-                                        placeholder="Escribe tu comentario..." required></textarea>
+                                <div class="mb-3">
+                                    <label for="comment-text" class="form-label">Comentario</label>
+                                    <textarea class="form-control bg-secondary text-white" id="comment-text" rows="3" required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-outline-light btn-sm w-100">Enviar
-                                    Comentario</button>
+                                <button type="submit" class="btn btn-levelup">Enviar comentario</button>
                             </form>
                         </div>
                     </div>
@@ -128,10 +146,7 @@
         </div>
     </div>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/catalogo.js"></script>
-
-    <footer class="bg-dark text-white mt-auto py-3" style="position:down; left:0; bottom:0; width:100%; z-index:100;">
+    <footer class="bg-dark text-white mt-auto py-3">
         <div class="text-center">
             <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
             <p>
@@ -145,6 +160,8 @@
             </p>
         </div>
     </footer>
-</body>
 
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/catalogo.js"></script>
+</body>
 </html>

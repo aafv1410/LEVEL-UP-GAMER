@@ -219,3 +219,25 @@ body {
     height: 250px; 
     object-fit: scale-down;
 }
+
+/* Estilo del contenedor de estrellas dentro del modal */
+#rating-stars {
+    direction: ltr; /* Asegura que las estrellas se alineen de izquierda a derecha */
+    text-align: center; /* Centra el grupo de estrellas */
+    unicode-bidi: bidi-override; /* Mantiene la dirección */
+}
+
+/* Estilo para cada estrella individual */
+#rating-stars .star {
+    font-size: 2.5rem; /* Tamaño de la estrella */
+    color: #888; /* Color inicial gris para estrellas no seleccionadas */
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
+}
+
+/* Estilo para las estrellas seleccionadas y al pasar el cursor */
+#rating-stars .star.selected,
+#rating-stars .star.hover {
+    color: #ffd700; /* Color dorado */
+}

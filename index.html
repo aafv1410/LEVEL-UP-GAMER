@@ -29,7 +29,23 @@
                 
                 <li class="nav-item" id="nav-mi-cuenta"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+                <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="catalogo.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Catálogo
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="catalogo.html?category=Juegos de Mesa">Juegos de Mesa</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Accesorios">Accesorios</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Consolas">Consolas</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Computadores Gamers">Computadores Gamers</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Sillas Gamers">Sillas Gamers</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Mouse">Mouse</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Mousepad">Mousepad</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Poleras Personalizadas">Poleras Personalizadas</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="catalogo.html">Ver Todo</a></li>
+    </ul>
+</li>
                 <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
                 <li class="nav-item">
                     <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
@@ -141,7 +157,39 @@
     </div>
   </footer>
   
+  
   <script src="js/appes.js"></script>
-
+  <script src="js/catalogo.js"></script>
+<div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">🛒 Carrito de Compras</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Subtotal</th>
+                            <th>Acciones</th> </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        </tbody>
+                </table>
+                <h4 class="text-end mt-3">Total: <span id="cart-total"></span></h4>
+            </div>
+            <div class="modal-footer border-top-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger" id="clear-cart">Vaciar Carrito</button>
+                <button type="button" class="btn btn-success">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+</div>
+  
 </body>
 </html>
