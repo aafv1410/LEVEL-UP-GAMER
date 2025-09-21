@@ -3,21 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA PARA MOSTRAR/OCULTAR ENLACES DE NAVEGACIÓN ---
     function isLoggedIn() {
-        return localStorage.getItem('isLoggedIn') === 'true';
+        return localStorage.getItem('usuarioLogeado') !== null;
     }
 
-    const miCuentaItem = document.getElementById('nav-mi-cuenta');
-    const iniciarSesionItem = document.getElementById('nav-iniciar-sesion');
+    const navMiCuenta = document.getElementById('nav-mi-cuenta');
+    const navIniciarSesion = document.getElementById('nav-iniciar-sesion');
+    const navRegistrarse = document.getElementById('nav-registrarse'); // Nuevo ID si lo tienes en tu HTML
 
-    if (miCuentaItem && iniciarSesionItem) {
-        miCuentaItem.style.display = 'none';
-        iniciarSesionItem.style.display = 'none';
-
-        if (isLoggedIn()) {
-            miCuentaItem.style.display = 'block';
-        } else {
-            iniciarSesionItem.style.display = 'block';
-        }
+    if (isLoggedIn()) {
+        if (navMiCuenta) navMiCuenta.style.display = 'block';
+        if (navIniciarSesion) navIniciarSesion.style.display = 'none';
+        if (navRegistrarse) navRegistrarse.style.display = 'none';
+    } else {
+        if (navMiCuenta) navMiCuenta.style.display = 'none';
+        if (navIniciarSesion) navIniciarSesion.style.display = 'block';
+        if (navRegistrarse) navRegistrarse.style.display = 'block';
     }
 
     // --- LÓGICA DEL FORMULARIO DE INICIO DE SESIÓN ---
@@ -26,36 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const correoInput = document.getElementById("correoLogin");
-            const passwordInput = document.getElementById("passwordLogin");
+            const correo = document.getElementById("correoLogin").value.trim();
+            const password = document.getElementById("passwordLogin").value;
             
-            // Validación de Correo con dominios permitidos
-            const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
-            const isValidEmail = allowedDomains.some(domain => correoInput.value.endsWith(domain));
-            
-            if (!isValidEmail) {
-                alert('Correo no válido. Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.');
+            // Lógica para admin (puede seguir siendo la misma)
+            if (correo === 'admin@duoc.cl' && password === 'admin123') {
+                login({ correo, password, rol: 'admin' });
                 return;
             }
 
-            // Validación de Contraseña con rango de caracteres
-            if (passwordInput.value.length < 4 || passwordInput.value.length > 10) {
-                alert('La contraseña debe tener entre 4 y 10 caracteres.');
-                return;
-            }
-            
-            // Simulación de login: Si es admin, va al panel. Sino, va a su perfil.
-            if (correoInput.value === 'admin@duoc.cl' && passwordInput.value === 'admin123') {
-                alert('¡Bienvenido, Administrador!');
-                login('admin'); // Pasa el rol 'admin'
+            // Buscar usuario en el array guardado
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            const usuarioEncontrado = usuarios.find(user => user.correo === correo && user.password === password);
+
+            if (usuarioEncontrado) {
+                alert("✅ ¡Inicio de sesión exitoso! Bienvenido/a " + usuarioEncontrado.usuario + ".");
+                login(usuarioEncontrado);
             } else {
-                 const usuarioRegistrado = JSON.parse(localStorage.getItem("usuarioRegistrado"));
-                 if (usuarioRegistrado && usuarioRegistrado.correo === correoInput.value && usuarioRegistrado.password === passwordInput.value) {
-                     alert("✅ ¡Inicio de sesión exitoso! Bienvenido/a " + usuarioRegistrado.usuario + ".");
-                     login('cliente'); // Pasa el rol 'cliente'
-                 } else {
-                     alert("❌ Correo o contraseña incorrectos. Por favor, inténtalo de nuevo.");
-                 }
+                alert("❌ Correo o contraseña incorrectos. Por favor, inténtalo de nuevo.");
             }
         });
     }
@@ -63,90 +51,80 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LÓGICA DEL FORMULARIO DE REGISTRO ---
     const registroForm = document.getElementById("registroForm");
     if (registroForm) {
-        const correoInput = document.getElementById("correo");
-        const passwordInput = document.getElementById("password");
-        const confirmInput = document.getElementById("confirmPassword");
-        const fechaInput = document.getElementById("fechaNacimiento");
-        const correoError = document.getElementById("correoError");
-        const passwordError = document.getElementById("passwordError");
-        const confirmError = document.getElementById("confirmError");
-        const edadError = document.getElementById("edadError");
+        registroForm.addEventListener("submit", function(event) {
+            event.preventDefault();
 
-        function calcularEdad(fechaNac) {
+            // Obtener los valores del formulario
+            const nombre = document.getElementById("nombre").value.trim();
+            const correo = document.getElementById("correo").value.trim();
+            const usuario = document.getElementById("usuario").value.trim();
+            const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Validaciones (manteniendo tu lógica)
+            const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
+            if (!allowedDomains.some(domain => correo.endsWith(domain))) {
+                alert('Correo no válido. Dominios permitidos: @duoc.cl, @profesor.duoc.cl, @gmail.com.');
+                return;
+            }
+            if (password.length < 4 || password.length > 10) {
+                alert('La contraseña debe tener entre 4 y 10 caracteres.');
+                return;
+            }
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden.');
+                return;
+            }
+
+            // Validar edad (manteniendo tu lógica)
             const hoy = new Date();
-            const nacimiento = new Date(fechaNac);
+            const nacimiento = new Date(fechaNacimiento);
             let edad = hoy.getFullYear() - nacimiento.getFullYear();
             const m = hoy.getMonth() - nacimiento.getMonth();
             if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
                 edad--;
             }
-            return edad;
-        }
-
-        function validarContrasenas() {
-            if (passwordInput.value.length < 4 || passwordInput.value.length > 10) {
-                passwordError.textContent = "La contraseña debe tener entre 4 y 10 caracteres.";
-            } else {
-                passwordError.textContent = "";
-            }
-            if (confirmInput.value !== passwordInput.value) {
-                confirmError.textContent = "Las contraseñas no coinciden.";
-            } else {
-                confirmError.textContent = "";
-            }
-        }
-
-        correoInput.addEventListener("input", () => {
-             const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
-             const isValidEmail = allowedDomains.some(domain => correoInput.value.endsWith(domain));
-             if(!isValidEmail && correoInput.value.length > 0) {
-                correoError.textContent = "Dominio no permitido.";
-             } else {
-                correoError.textContent = "";
-             }
-        });
-        passwordInput.addEventListener("input", validarContrasenas);
-        confirmInput.addEventListener("input", validarContrasenas);
-        fechaInput.addEventListener("input", () => {
-            const edad = calcularEdad(fechaInput.value);
             if (edad < 18) {
-                edadError.textContent = "Debes tener al menos 18 años para registrarte.";
-            } else {
-                edadError.textContent = "";
-            }
-        });
-
-        registroForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            // Re-validar todo antes de enviar
-            validarContrasenas();
-            if(correoError.textContent || passwordError.textContent || confirmError.textContent || edadError.textContent) {
-                alert("Por favor, corrige los errores en el formulario.");
+                alert("Debes tener al menos 18 años para registrarte.");
                 return;
             }
 
-            const user = {
-                nombre: document.getElementById("nombre").value.trim(),
-                correo: correoInput.value.trim(),
-                usuario: document.getElementById("usuario").value.trim(),
-                fechaNacimiento: fechaInput.value,
-                password: passwordInput.value
-            };
-            localStorage.setItem("usuarioRegistrado", JSON.stringify(user));
+            // Obtener todos los usuarios y verificar si el correo ya existe
+            const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+            const correoExistente = usuarios.find(user => user.correo === correo);
 
-            alert("✅ ¡Registro exitoso! Bienvenido/a " + user.usuario + ".");
-            login('cliente');
+            if (correoExistente) {
+                alert("❌ Este correo electrónico ya está registrado. Por favor, inicia sesión.");
+                return;
+            }
+
+            // Crear el nuevo objeto de usuario con datos iniciales
+            const newUser = {
+                nombre,
+                correo,
+                usuario,
+                fechaNacimiento,
+                password,
+                referralCode: 'REF-' + usuario.toUpperCase(),
+                puntos: 0,
+                nivel: 'Madera'
+            };
+
+            // Agregar el nuevo usuario al array y guardarlo
+            usuarios.push(newUser);
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+            // Iniciar sesión automáticamente después del registro
+            login(newUser);
         });
     }
 });
 
 // --- FUNCIONES GLOBALES DE LOGIN/LOGOUT ---
-function login(role) {
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('userRole', role); // Guardamos el rol
-    
-    if (role === 'admin') {
+function login(userData) {
+    localStorage.setItem('usuarioLogeado', JSON.stringify(userData));
+    if (userData.rol === 'admin') {
         window.location.href = "admin.html";
     } else {
         window.location.href = "perfil.html";
@@ -154,7 +132,6 @@ function login(role) {
 }
 
 function logout() {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userRole');
+    localStorage.removeItem('usuarioLogeado');
     window.location.href = "index.html";
 }
