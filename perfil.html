@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,15 +17,33 @@
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
-      <a class="nav-link text-white ms-3 d-none d-lg-block" href="perfil.html">Puntos LevelUp: <span id="nav-user-points" class="fw-bold text-warning">0</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <a class="nav-link" href="perfil.html">Puntos LevelUp: <span id="nav-user-points"
+                                class="fw-bold text-warning">0</span></a>
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="registro.html">Registrarse</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="catalogoDropdown" role="button" data-bs-toggle="dropdown">
+              Catálogo
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="catalogo.html?categoria=Juegos%20de%20Mesa">Juegos de Mesa</a></li>
+              <li><a class="dropdown-item" href="catalogo.html?categoria=Accesorios">Accesorios</a></li>
+              <li><a class="dropdown-item" href="catalogo.html?categoria=Consolas">Consolas</a></li>
+              <li><a class="dropdown-item" href="catalogo.html?categoria=Computadores%20Gamers">Computadores Gamers</a></li>
+              <li><a class="dropdown-item" href="catalogo.html?categoria=Sillas%20Gamers">Sillas Gamers</a></li>
+              <li><a class="dropdown-item" href="catalogo.html?categoria=Mouse">Mouse</a></li>
+              <li><a class="dropdown-item" href="catalogo.html?categoria=Mousepad">Mousepad</a></li>
+              <li><a class="dropdown-item" href="catalogo.html?categoria=Poleras%20Personalizadas">Poleras Personalizadas</a></li>
+              <li><a class="dropdown-item" href="catalogo.html">Ver Todo</a></li>
+            </ul>
+          </li>
+          
           <li class="nav-item" id="nav-mi-cuenta"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
           <li class="nav-item" id="nav-iniciar-sesion"><a class="nav-link" href="inicio.html">Iniciar sesión</a></li>
-          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
           <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
           <li class="nav-item">
             <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
@@ -35,6 +54,7 @@
       </div>
     </div>
   </nav>
+
 
   <div class="container my-5 pt-5">
     <h2 class="text-primary text-center mb-4">Perfil</h2>
@@ -60,7 +80,8 @@
         <input type="text" class="form-control" id="referral-code" value="TUCODIGO123" readonly>
         <button class="btn btn-primary" id="copy-referral-btn">Copiar</button>
       </div>
-      <p>Enlace para compartir: <a href="registro.html?ref=TUCODIGO123" id="referral-link" class="text-info">https://levelup.cl/registro?ref=TUCODIGO123</a></p>
+      <p>Enlace para compartir: <a href="registro.html?ref=TUCODIGO123" id="referral-link"
+          class="text-info">https://levelup.cl/registro?ref=TUCODIGO123</a></p>
     </div>
 
     <div class="card bg-secondary text-white p-4 mb-4">
@@ -117,7 +138,7 @@
             <input class="form-check-input" type="checkbox" value="Computadores Gamers" id="catPC">
             <label class="form-check-label" for="catPC">Computadores Gamers</label>
           </div>
-          <div class="form-check">
+           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="Sillas Gamers" id="catSillas">
             <label class="form-check-label" for="catSillas">Sillas Gamers</label>
           </div>
@@ -144,4 +165,5 @@
   </footer>
 <script src="js/gamification.js"></script> <script src="js/perfil.js"></script>
 </body>
+
 </html>
