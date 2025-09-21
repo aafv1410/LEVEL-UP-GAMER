@@ -434,10 +434,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function renderComments(comments, container) {
+function renderComments(comments, container) {
         container.innerHTML = '';
         if (comments.length === 0) {
-            container.innerHTML = '<p class="text-muted">No hay comentarios aún.</p>';
+            container.innerHTML = '<p class="text-muted"></p>';
             return;
         }
 
@@ -501,3 +501,26 @@ function logout() {
     localStorage.removeItem('usuarioLogeado');
     window.location.href = "index.html";
 }
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchBar');
+    const productContainer = document.getElementById('product-list');
+
+    searchInput.addEventListener('keyup', (event) => {
+        const searchText = event.target.value.toLowerCase();
+        const productCards = productContainer.children; // Obtiene todas las tarjetas de productos
+
+        Array.from(productCards).forEach(card => {
+            // Asume que el nombre del producto está en un elemento con la clase 'card-title'
+            const productNameElement = card.querySelector('.card-title');
+            if (productNameElement) {
+                const productName = productNameElement.textContent.toLowerCase();
+
+                if (productName.includes(searchText)) {
+                    card.style.display = 'block'; // Muestra la tarjeta del producto
+                } else {
+                    card.style.display = 'none'; // Oculta la tarjeta del producto
+                }
+            }
+        });
+    });
+});

@@ -241,3 +241,15 @@ body {
 #rating-stars .star.hover {
     color: #ffd700; /* Color dorado */
 }
+#searchBar {
+    background-color: #f8f9fa; /* Color de fondo gris claro */
+    color: #212529; /* Color de texto oscuro para un buen contraste */
+    border-color: #f8f9fa; /* Color del borde, igual que el fondo */
+}
+
+/* Opcional: Estilo cuando el usuario hace clic en la barra de búsqueda */
+#searchBar:focus {
+    background-color: #ffffff; /* Blanco cuando está activo */
+    border-color: #80bdff; /* Un color de borde que indique que está seleccionado */
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Efecto de resplandor para indicar foco */
+}

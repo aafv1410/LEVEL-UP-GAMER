@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-dark text-white d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="admin.html">Panel de Administración</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAdmin">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAdmin">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="gestionar-productos.html">Gestión de Productos</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="gestionar-usuarios.html">Gestión de Usuarios</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-5 pt-5 d-flex flex-grow-1 justify-content-center align-items-center">
+        <div class="w-100" style="max-width: 800px;">
+            <h2 class="text-primary mb-4 text-center">Gestión de Usuarios</h2>
+            <div class="card bg-secondary p-4 mb-4">
+                <h3 id="form-title">Nuevo Usuario</h3>
+                <form id="user-form">
+                    <input type="hidden" id="user-index">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" maxlength="50" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="correo" maxlength="100" required>
+                        <div id="email-error" class="error-msg"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="usuario" placeholder="Tu gamer tag" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaNacimiento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipoUsuario" class="form-label">Tipo de Usuario</label>
+                        <select class="form-select" id="tipoUsuario" required>
+                            <option value="cliente">Cliente</option>
+                            <option value="vendedor">Vendedor</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" minlength="4" maxlength="10" required>
+                        <div id="password-error" class="error-msg"></div>
+                    </div>
+                    <button type="submit" class="btn btn-levelup">Guardar Usuario</button>
+                </form>
+            </div>
+
+            <h3 class="text-primary mb-3">Lista de Usuarios</h3>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre Completo</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list-admin">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin-usuarios.js"></script>
+</body>
+
+</html>
