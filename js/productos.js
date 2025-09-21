@@ -93,9 +93,9 @@ function renderCart() {
                 <td>${item.name}</td>
                 <td>
                     <input type="number" min="1" value="${item.quantity}" 
-                           class="form-control form-control-sm" 
-                           style="width:70px"
-                           onchange="updateQuantity(${index}, this.value)">
+                        class="form-control form-control-sm" 
+                        style="width:70px"
+                        onchange="updateQuantity(${index}, this.value)">
                 </td>
                 <td>$${item.price.toLocaleString("es-CL")}</td>
                 <td>$${subtotal.toLocaleString("es-CL")}</td>
@@ -105,9 +105,12 @@ function renderCart() {
             </tr>
         `;
     });
+    
+    
     cartCount.textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
     cartTotal.textContent = "$" + total.toLocaleString("es-CL") + " CLP";
     localStorage.setItem('cart', JSON.stringify(cart));
+    
 }
 
 function updateQuantity(index, quantity) {
