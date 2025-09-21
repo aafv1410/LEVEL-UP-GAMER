@@ -244,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function removeFromCart(productId) {
         const item = cart.find(item => item.product.id === productId);
         if (item) {
-            // Se modifica esta lógica: si hay más de 1, se reduce. Si hay 1, se elimina
             if (item.quantity > 1) {
                 item.quantity--;
             } else {
@@ -279,7 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsEl.appendChild(row);
         });
 
-        // Se corrige para mostrar 0 si el carrito está vacío
         cartTotalEl.textContent = `$${formatPrice(total)} CLP`;
     }
 
@@ -336,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modalPrice.innerHTML = precioHTML;
             modalAddToCartBtn.onclick = () => addToCart(product.id);
 
-            // Cargar y mostrar estrellas interactivas en el modal
             modalStarsContainer.innerHTML = '';
             for (let i = 1; i <= 5; i++) {
                 const star = document.createElement('span');
@@ -347,7 +344,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const stars = modalStarsContainer.querySelectorAll('.star');
 
-            // Marcar las estrellas según el rating del producto (en el modal)
             const productRating = product.rating || 0;
             stars.forEach(star => {
                 if (parseInt(star.dataset.value) <= Math.round(productRating)) {
@@ -357,7 +353,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Lógica para manejar el hover y el click de las estrellas
             stars.forEach(star => {
                 star.addEventListener('mouseover', () => {
                     const ratingValue = parseInt(star.dataset.value);
@@ -374,7 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     stars.forEach(s => s.classList.remove('hover'));
                 });
 
-                // Al hacer clic, solo se guarda el valor seleccionado
                 star.addEventListener('click', () => {
                     selectedRating = parseInt(star.dataset.value);
                     stars.forEach(s => {
@@ -387,7 +381,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            // Lógica para comentarios
             renderComments(product.comments, commentsSection);
 
             document.getElementById('comment-form').onsubmit = (e) => {
@@ -437,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderComments(comments, container) {
         container.innerHTML = '';
         if (comments.length === 0) {
-            container.innerHTML = '<p class="text-muted"></p>';
+            container.innerHTML = '<p class="text-muted">Sé el primero en dejar un comentario.</p>';
             return;
         }
 
@@ -481,6 +474,32 @@ function renderComments(comments, container) {
         productosAmostrar = productos.filter(product => product.category.toLowerCase() === categoryFilter.toLowerCase());
     }
 
+    // --- NUEVA LÓGICA: Ordenar por preferencias del usuario ---
+    const userPreferences = loggedInUser && loggedInUser.preferencias ? loggedInUser.preferencias : [];
+
+    function sortProductsByPreference(products, preferences) {
+        if (!preferences || preferences.length === 0) {
+            return products; // Si no hay preferencias, no se ordena
+        }
+
+        const preferredProducts = [];
+        const otherProducts = [];
+
+        products.forEach(product => {
+            if (preferences.includes(product.category)) {
+                preferredProducts.push(product);
+            } else {
+                otherProducts.push(product);
+            }
+        });
+
+        return preferredProducts.concat(otherProducts);
+    }
+
+    // Ordenar los productos antes de renderizarlos
+    const sortedProducts = sortProductsByPreference(productosAmostrar, userPreferences);
+
+
     // Escuchar clics en los botones de "Eliminar" del carrito
     document.addEventListener('click', (e) => {
         if (e.target.closest('.remove-item')) {
@@ -491,7 +510,7 @@ function renderComments(comments, container) {
     });
 
     // Renderizado inicial
-    renderProducts(productosAmostrar);
+    renderProducts(sortedProducts);
     updateCartCount();
     renderCart();
 });
@@ -501,26 +520,3 @@ function logout() {
     localStorage.removeItem('usuarioLogeado');
     window.location.href = "index.html";
 }
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchBar');
-    const productContainer = document.getElementById('product-list');
-
-    searchInput.addEventListener('keyup', (event) => {
-        const searchText = event.target.value.toLowerCase();
-        const productCards = productContainer.children; // Obtiene todas las tarjetas de productos
-
-        Array.from(productCards).forEach(card => {
-            // Asume que el nombre del producto está en un elemento con la clase 'card-title'
-            const productNameElement = card.querySelector('.card-title');
-            if (productNameElement) {
-                const productName = productNameElement.textContent.toLowerCase();
-
-                if (productName.includes(searchText)) {
-                    card.style.display = 'block'; // Muestra la tarjeta del producto
-                } else {
-                    card.style.display = 'none'; // Oculta la tarjeta del producto
-                }
-            }
-        });
-    });
-});

@@ -216,10 +216,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (redeemPointsBtn) {
                 redeemPointsBtn.addEventListener('click', () => {
                     const pointsToRedeem = 500;
+                    const discountAmount = 5000;
+
+                    if (usuarioLogeado.descuentoCanjeado) {
+                        alert('Ya tienes un descuento canjeado y no se puede acumular.');
+                        return;
+                    }
+                    
                     if (usuarioLogeado.puntos >= pointsToRedeem) {
                         usuarioLogeado.puntos -= pointsToRedeem;
+                        usuarioLogeado.descuentoCanjeado = discountAmount;
                         updateLevel();
+                        localStorage.setItem('usuarioLogeado', JSON.stringify(usuarioLogeado));
                         updateUI();
+                        alert(`¡Has canjeado ${pointsToRedeem} puntos y obtenido un descuento de $${discountAmount}!`);
+                        window.location.reload();
                     } else {
                         alert('No tienes suficientes puntos para canjear.');
                     }
@@ -264,23 +275,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            preferenciasForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const categoriasSeleccionadas = [];
-                document.querySelectorAll('#preferenciasForm input[type="checkbox"]:checked').forEach(checkbox => {
-                    categoriasSeleccionadas.push(checkbox.value);
-                });
-                localStorage.setItem('preferenciasUsuario', JSON.stringify({ categorias: categoriasSeleccionadas }));
-            });
-
-            const preferencias = JSON.parse(localStorage.getItem('preferenciasUsuario')) || {};
-            if (preferencias.categorias) {
+            if (preferenciasForm) {
+                // Leer preferencias guardadas al cargar la página
+                const preferenciasGuardadas = usuarioLogeado.preferencias || [];
                 document.querySelectorAll('#preferenciasForm input[type="checkbox"]').forEach(checkbox => {
-                    if (preferencias.categorias.includes(checkbox.value)) {
+                    if (preferenciasGuardadas.includes(checkbox.value)) {
                         checkbox.checked = true;
                     }
                 });
+
+                preferenciasForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    const categoriasSeleccionadas = [];
+                    document.querySelectorAll('#preferenciasForm input[type="checkbox"]:checked').forEach(checkbox => {
+                        categoriasSeleccionadas.push(checkbox.value);
+                    });
+                    
+                    // Actualizar las preferencias del usuario logeado en localStorage
+                    usuarioLogeado.preferencias = categoriasSeleccionadas;
+                    localStorage.setItem('usuarioLogeado', JSON.stringify(usuarioLogeado));
+
+                    // También actualizar en la lista de todos los usuarios
+                    let todosLosUsuarios = JSON.parse(localStorage.getItem('usuarios'));
+                    const userIndex = todosLosUsuarios.findIndex(user => user.correo === usuarioLogeado.correo);
+                    if (userIndex !== -1) {
+                        todosLosUsuarios[userIndex].preferencias = categoriasSeleccionadas;
+                        localStorage.setItem('usuarios', JSON.stringify(todosLosUsuarios));
+                    }
+                    
+                    alert('Preferencias guardadas correctamente. ✅');
+                });
             }
+
         } else {
             window.location.href = 'inicio.html';
         }
@@ -293,6 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cartSummaryList = document.getElementById('cart-summary-list');
         const totalAmountEl = document.getElementById('total-amount');
         const shippingCost = 5000; // Costo de envío fijo
+        const usuarioLogeado = JSON.parse(localStorage.getItem('usuarioLogeado'));
 
         let subtotal = 0;
 
@@ -341,14 +369,24 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         cartSummaryList.appendChild(subtotalItem);
 
+        // Aplicamos el descuento si existe
+        let total = subtotal + shippingCost;
+        if (usuarioLogeado && usuarioLogeado.descuentoCanjeado) {
+            const discountItem = document.createElement('li');
+            discountItem.className = 'list-group-item d-flex justify-content-between align-items-center bg-secondary text-white';
+            discountItem.innerHTML = `
+                <p class="mb-0 text-warning">Descuento Canjeado</p>
+                <p class="mb-0 text-warning">-$${usuarioLogeado.descuentoCanjeado.toLocaleString('es-CL')}</p>
+            `;
+            cartSummaryList.appendChild(discountItem);
+            total -= usuarioLogeado.descuentoCanjeado;
+        }
 
         // Calculamos el total final
-        const total = subtotal + shippingCost;
         totalAmountEl.textContent = `$${total.toLocaleString('es-CL')}`;
     }
 
     // Llamamos a la función para cargar el resumen del carrito al iniciar la página
-    // Esto se ejecutará solo si el elemento con el ID 'cart-summary-list' existe en el DOM (es decir, en la página de pago)
     if (document.getElementById('cart-summary-list')) {
         loadCartSummary();
     }
@@ -359,21 +397,36 @@ document.addEventListener('DOMContentLoaded', () => {
         finalizarCompraBtn.addEventListener('click', (event) => {
             event.preventDefault();
 
-            // Aquí puedes agregar la lógica de validación de los formularios de envío y pago
-            // ... (por ejemplo, validar que los campos no estén vacíos) ...
+            // Lógica de validación
+            const shippingForm = document.getElementById('shippingForm');
+            const paymentForm = document.getElementById('paymentForm');
 
-            // Si la validación es exitosa, se puede simular la compra
+            if (!shippingForm.checkValidity() || !paymentForm.checkValidity()) {
+                alert('Por favor, completa todos los campos requeridos correctamente.');
+                shippingForm.classList.add('was-validated');
+                paymentForm.classList.add('was-validated');
+                return;
+            }
+
+            // Aquí se simula la compra exitosa
             alert('¡Compra finalizada con éxito! 🎉');
 
-            // Opcional: limpiar el carrito después de la compra
-            localStorage.removeItem('cart');
+            const usuarioLogeado = JSON.parse(localStorage.getItem('usuarioLogeado'));
+            
+            // Si el usuario tenía un descuento canjeado, lo eliminamos
+            if (usuarioLogeado && usuarioLogeado.descuentoCanjeado) {
+                delete usuarioLogeado.descuentoCanjeado;
+                localStorage.setItem('usuarioLogeado', JSON.stringify(usuarioLogeado));
+            }
 
-            // Redireccionar a una página de confirmación o al inicio
+            // Limpiar el carrito después de la compra
+            localStorage.removeItem('cart');
             window.location.href = "index.html";
         });
     }
 
 });
+
 
 // --- FUNCIONES GLOBALES DE LOGIN/LOGOUT ---
 function login(userData) {
