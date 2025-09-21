@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const loggedInUser = JSON.parse(localStorage.getItem('usuarioLogeado'));
     
-    // Lógica para el costo de envío (ejemplo)
+    // Lógica para el costo de envío
     const shippingCost = 5000;
 
     // Función para renderizar el resumen del carrito en la página de pago
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         cartSummaryList.appendChild(subtotalItem);
 
-        // Calcular el total inicial (subtotal + envío)
+        // Calcular el total inicial 
         let total = subtotal + shippingCost;
         
         // Aplicar el descuento por puntos si existe
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Valida ambos formularios
         if (shippingForm.checkValidity() && paymentForm.checkValidity()) {
-            alert('¡Compra finalizada con éxito! ✅');
+            alert('¡Compra finalizada con éxito!');
 
             // Eliminar el descuento canjeado del perfil del usuario
             if (loggedInUser && loggedInUser.descuentoCanjeado) {
@@ -110,11 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Llamar a la función para renderizar el resumen del carrito al cargar la página
     renderCartSummary();
 });
 
-// Función de logout (si la necesitas aquí, aunque es mejor en un archivo global como appes.js)
+// Función de logout 
 function logout() {
     localStorage.removeItem('usuarioLogeado');
     window.location.href = "index.html";

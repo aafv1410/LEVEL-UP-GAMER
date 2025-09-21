@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- LÓGICA COMPARTIDA PARA GESTIÓN DE SESIÓN Y VISTA DEL NAVBAR ---
+    // logica del navbar
     const navMiCuenta = document.getElementById('nav-mi-cuenta');
     const navIniciarSesion = document.getElementById('nav-iniciar-sesion');
     const navRegistrarse = document.getElementById('nav-registrarse');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     actualizarNavbar();
 
-    // --- DATOS DE PRODUCTOS ---
+    // datos del catalogo
     const initialProducts = [{
         id: "CAT01",
         name: "Catan",
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- LÓGICA DEL CATÁLOGO ---
+    // logica del catalogo
     const productListEl = document.getElementById('product-list');
     const searchBar = document.getElementById('searchBar');
     const cartCountEl = document.getElementById('cart-count');
@@ -183,9 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (let i = 1; i <= 5; i++) {
             if (i <= roundedRating) {
-                starsHtml += '<i class="fas fa-star text-warning"></i>'; // Estrella llena
+                starsHtml += '<i class="fas fa-star text-warning"></i>'; 
             } else {
-                starsHtml += '<i class="far fa-star text-warning"></i>'; // Estrella vacía
+                starsHtml += '<i class="far fa-star text-warning"></i>'; 
             }
         }
         return starsHtml;
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // LÓGICA DE VALORACIONES INTERACTIVAS Y COMENTARIOS
+    // logica de valoraciones y comentarios
     let currentProductId = null;
     let selectedRating = 0;
 
@@ -474,12 +474,12 @@ function renderComments(comments, container) {
         productosAmostrar = productos.filter(product => product.category.toLowerCase() === categoryFilter.toLowerCase());
     }
 
-    // --- NUEVA LÓGICA: Ordenar por preferencias del usuario ---
+    // Ordenar por preferencias del usuario 
     const userPreferences = loggedInUser && loggedInUser.preferencias ? loggedInUser.preferencias : [];
 
     function sortProductsByPreference(products, preferences) {
         if (!preferences || preferences.length === 0) {
-            return products; // Si no hay preferencias, no se ordena
+            return products; 
         }
 
         const preferredProducts = [];
@@ -499,8 +499,7 @@ function renderComments(comments, container) {
     // Ordenar los productos antes de renderizarlos
     const sortedProducts = sortProductsByPreference(productosAmostrar, userPreferences);
 
-
-    // Escuchar clics en los botones de "Eliminar" del carrito
+    // Manejo de eventos para eliminar un ítem del carrito
     document.addEventListener('click', (e) => {
         if (e.target.closest('.remove-item')) {
             const button = e.target.closest('.remove-item');

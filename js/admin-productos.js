@@ -71,10 +71,10 @@ productForm.addEventListener('submit', function(e) {
     };
 
     const id = productIdField.value;
-    if (id) { // Estamos editando
+    if (id) {
         const index = parseInt(id);
-        products[index] = { ...products[index], ...productData }; // Conservar el rating y comentarios
-    } else { // Estamos creando
+        products[index] = { ...products[index], ...productData }; // Conservar la calificación y comentarios
+    } else {
         // Validar que el código no se repita
         if (products.some(p => p.id === productData.id)) {
             alert('Error: El código del producto ya existe.');
@@ -95,7 +95,7 @@ function editProduct(index) {
     productIdField.value = index;
     
     document.getElementById('codigo').value = product.id;
-    document.getElementById('codigo').disabled = true; // No se puede editar el código
+    document.getElementById('codigo').disabled = true; 
     document.getElementById('nombre').value = product.name;
     document.getElementById('descripcion').value = product.description;
     document.getElementById('precio').value = product.price;
@@ -105,7 +105,7 @@ function editProduct(index) {
     document.getElementById('imagen').value = product.image;
     
     cancelEditBtn.style.display = 'inline-block';
-    window.scrollTo(0, 0); // Sube al inicio de la página
+    window.scrollTo(0, 0); 
 }
 
 // Función para eliminar un producto
@@ -128,7 +128,6 @@ function resetForm() {
 
 // Evento para el botón de cancelar edición
 cancelEditBtn.addEventListener('click', resetForm);
-// Carga inicial
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     resetForm();

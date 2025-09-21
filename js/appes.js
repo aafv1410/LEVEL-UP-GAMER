@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- FUNCIONES DE UTILIDAD ---
+    // Función para mostrar mensajes de error
     function mostrarError(elemento, mensaje) {
         const errorElement = document.getElementById(elemento);
         
@@ -11,10 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const logoutBtn = document.getElementById('logout-btn');
 
-    // Verifica que el botón exista en la página antes de agregar el evento
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
-            // Llama a la función logout() que ya tienes definida
+            
             logout();
         });
     }
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA COMPARTIDA PARA GESTIÓN DE SESIÓN Y VISTA DEL NAVBAR ---
+    // logica de la barra de navegacion
     const navMiCuenta = document.getElementById('nav-mi-cuenta');
     const navIniciarSesion = document.getElementById('nav-iniciar-sesion');
     const navRegistrarse = document.getElementById('nav-registrarse');
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     actualizarNavbar();
 
-    // --- LÓGICA DEL FORMULARIO DE INICIO DE SESIÓN ---
+    // logica del formulario de inicio de sesion
     const loginForm = document.getElementById("loginForm");
     if (loginForm) {
         loginForm.addEventListener("submit", function(event) {
@@ -76,12 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (usuarioEncontrado) {
                 login(usuarioEncontrado);
             } else {
-                mostrarError('loginError', '❌ Correo o contraseña incorrectos.');
+                mostrarError('loginError', ' Correo o contraseña incorrectos.');
             }
         });
     }
 
-    // --- LÓGICA DEL FORMULARIO DE REGISTRO ---
+    // logica del formulario de registro
     const registroForm = document.getElementById("registroForm");
     if (registroForm) {
         registroForm.addEventListener("submit", function(event) {
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA ESPECÍFICA DE LA PÁGINA DE PERFIL ---
+    // logica especifica de la pagina de perfil
     const perfilForm = document.getElementById('perfilForm');
     const preferenciasForm = document.getElementById('preferenciasForm');
 
@@ -304,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         localStorage.setItem('usuarios', JSON.stringify(todosLosUsuarios));
                     }
                     
-                    alert('Preferencias guardadas correctamente. ✅');
+                    alert('Preferencias guardadas correctamente. ');
                 });
             }
 
@@ -313,20 +312,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- LÓGICA ESPECÍFICA DEL CARRITO EN LA PÁGINA DE PAGO ---
+    // logica especifica de la pagina de checkout
     function loadCartSummary() {
         // Obtenemos los productos del localStorage
         const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
         const cartSummaryList = document.getElementById('cart-summary-list');
         const totalAmountEl = document.getElementById('total-amount');
-        const shippingCost = 5000; // Costo de envío fijo
+        const shippingCost = 5000; 
         const usuarioLogeado = JSON.parse(localStorage.getItem('usuarioLogeado'));
 
         let subtotal = 0;
 
-        if (!cartSummaryList || !totalAmountEl) return; // Salir si los elementos no existen
+        if (!cartSummaryList || !totalAmountEl) return; 
 
-        // Limpiamos la lista para evitar duplicados
+
         cartSummaryList.innerHTML = '';
 
         // Si el carrito está vacío, mostramos un mensaje
@@ -340,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Iteramos sobre los productos del carrito para crear los elementos de la lista
+        // Recorremos los productos del carrito para crear los elementos de la lista
         cartItems.forEach(item => {
             const listItem = document.createElement('li');
             listItem.className = 'list-group-item d-flex justify-content-between align-items-center bg-secondary text-white';
@@ -391,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadCartSummary();
     }
 
-    // --- LÓGICA PARA EL BOTÓN DE FINALIZAR COMPRA ---
+    // logica del boton finalizar compra
     const finalizarCompraBtn = document.querySelector('.btn-levelup.btn-lg');
     if (finalizarCompraBtn) {
         finalizarCompraBtn.addEventListener('click', (event) => {
@@ -428,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- FUNCIONES GLOBALES DE LOGIN/LOGOUT ---
+// funciones de login/logout
 function login(userData) {
     localStorage.setItem('usuarioLogeado', JSON.stringify(userData));
     if (userData.rol === 'admin') {

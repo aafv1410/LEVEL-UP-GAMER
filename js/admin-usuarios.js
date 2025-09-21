@@ -58,9 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
             password: document.getElementById('password').value
         };
 
-        if (index) { // Editando
+        if (index) { 
             users[index] = newUser;
-        } else { // Creando
+        } else {
             users.push(newUser);
         }
         
