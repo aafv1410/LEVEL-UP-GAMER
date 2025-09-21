@@ -288,6 +288,22 @@ function login(userData) {
     }
 }
 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (todo el código existente) ...
+
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('usuarioLogeado');
+            window.location.href = "index.html";
+        });
+    }
+
+});
+
+// La función de logout también puede estar fuera del DOMContentLoaded si lo prefieres
 function logout() {
     localStorage.removeItem('usuarioLogeado');
     window.location.href = "index.html";
