@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- FUNCIONES DE UTILIDAD PARA ERRORES ---
+    // --- FUNCIONES DE UTILIDAD ---
     function mostrarError(elemento, mensaje) {
         const errorElement = document.getElementById(elemento);
         if (errorElement) {
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMiCuenta = document.getElementById('nav-mi-cuenta');
     const navIniciarSesion = document.getElementById('nav-iniciar-sesion');
     const navRegistrarse = document.getElementById('nav-registrarse');
+    const navPuntosContainer = document.getElementById('nav-puntos-container');
 
     const usuarioLogeado = JSON.parse(localStorage.getItem('usuarioLogeado'));
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navMiCuenta) navMiCuenta.style.display = 'block';
             if (navIniciarSesion) navIniciarSesion.style.display = 'none';
             if (navRegistrarse) navRegistrarse.style.display = 'none';
+            if (navPuntosContainer) navPuntosContainer.style.display = 'block';
 
             const navUserPointsEl = document.getElementById('nav-user-points');
             if (navUserPointsEl && usuarioLogeado.puntos !== undefined) {
@@ -38,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navMiCuenta) navMiCuenta.style.display = 'none';
             if (navIniciarSesion) navIniciarSesion.style.display = 'block';
             if (navRegistrarse) navRegistrarse.style.display = 'block';
+            if (navPuntosContainer) navPuntosContainer.style.display = 'none';
         }
     }
 
@@ -121,6 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Lógica para el descuento del 20%
+            let descuento = 0;
+            if (correo.endsWith('@duoc.cl') || correo.endsWith('@profesor.duoc.cl')) {
+                descuento = 20;
+            }
+
             const newUser = {
                 nombre,
                 correo,
@@ -129,8 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 password,
                 referralCode: 'REF-' + usuario.toUpperCase(),
                 puntos: 0,
-                nivel: 'Madera'
+                nivel: 'Madera',
+                descuento: descuento
             };
+
             usuarios.push(newUser);
             localStorage.setItem("usuarios", JSON.stringify(usuarios));
             
@@ -139,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- LÓGICA ESPECÍFICA DE LA PÁGINA DE PERFIL ---
-
     const perfilForm = document.getElementById('perfilForm');
     const preferenciasForm = document.getElementById('preferenciasForm');
 
@@ -157,10 +167,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const referralCodeEl = document.getElementById('referral-code');
             const referralLinkEl = document.getElementById('referral-link');
             const copyReferralBtn = document.getElementById('copy-referral-btn');
+            const descuentoInfoEl = document.getElementById('descuento-info');
+
+            if (descuentoInfoEl && usuarioLogeado.descuento > 0) {
+                descuentoInfoEl.textContent = `¡Felicidades! Tienes un descuento del ${usuarioLogeado.descuento}% de por vida.`;
+                descuentoInfoEl.style.display = 'block';
+            }
 
             const updateUI = () => {
                 if (userPointsEl) userPointsEl.textContent = usuarioLogeado.puntos;
                 if (userLevelEl) userLevelEl.textContent = usuarioLogeado.nivel;
+                const navUserPointsEl = document.getElementById('nav-user-points');
                 if (navUserPointsEl) navUserPointsEl.textContent = usuarioLogeado.puntos;
             };
 
