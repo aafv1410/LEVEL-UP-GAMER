@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Level-Up Gamer</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="bg-dark text-white">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="img/Imagen1.png" alt="logo" style="height:70px;"></a>
+        
+        <a id="nav-puntos-container" class="nav-link text-white ms-3 d-none d-lg-block" href="perfil.html">
+            Puntos LevelUp: <span id="nav-user-points" class="fw-bold text-warning">0</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="nav-iniciar-sesion"><a class="nav-link" href="inicio.html">Iniciar sesión</a></li>
+                <li class="nav-item" id="nav-registrarse"><a class="nav-link" href="registro.html">Registrarse</a></li>
+                
+                <li class="nav-item" id="nav-mi-cuenta"><a class="nav-link" href="perfil.html">Mi cuenta</a></li>
+                
+                <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="catalogo.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Catálogo
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="catalogo.html?category=Juegos de Mesa">Juegos de Mesa</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Accesorios">Accesorios</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Consolas">Consolas</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Computadores Gamers">Computadores Gamers</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Sillas Gamers">Sillas Gamers</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Mouse">Mouse</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Mousepad">Mousepad</a></li>
+        <li><a class="dropdown-item" href="catalogo.html?category=Poleras Personalizadas">Poleras Personalizadas</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="catalogo.html">Ver Todo</a></li>
+    </ul>
+</li>
+                <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+                <li class="nav-item">
+                    <button class="btn btn-levelup" data-bs-toggle="modal" data-bs-target="#cartModal">
+                        🛒 Carrito <span id="cart-count" class="badge bg-danger">0</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <main class="container my-5 pt-5">
+        <h2 class="text-center mb-5 section-title">Finalizar Compra</h2>
+        
+        <div class="row justify-content-center">
+            
+            <div class="col-md-6 mb-4">
+                <div class="form-section">
+                    <h4 class="mb-3 text-white">Información de Envío</h4>
+                    <form id="shippingForm" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Ej: Juan Pérez" required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa tu nombre completo.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="tu@ejemplo.com" required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa un correo electrónico válido.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Dirección de Envío</label>
+                            <input type="text" class="form-control" id="address" placeholder="Ej: Calle Falsa 123" required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa tu dirección de envío.
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" id="city" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa tu ciudad.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="postalCode" class="form-label">Código Postal</label>
+                                <input type="text" class="form-control" id="postalCode" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa tu código postal.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="form-section">
+                    <h4 class="mb-3 text-white">Resumen y Pago</h4>
+                    <div class="card bg-secondary p-3 mb-3">
+                        <ul class="list-group list-group-flush" id="cart-summary-list">
+                        </ul>
+                        <hr class="text-white my-3">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-secondary">
+                                <p class="mb-0 text-white">Envío</p>
+                                <p class="mb-0 text-white" id="shipping-cost">$5.000</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-secondary">
+                                <h5 class="mb-0 text-primary">Total</h5>
+                                <h5 class="mb-0 text-primary"><span id="total-amount">$0</span></h5>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h5 class="mt-4 mb-3 text-white">Método de Pago</h5>
+                    <form id="paymentForm" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                            <input type="text" class="form-control" id="cardNumber" placeholder="0000 0000 0000 0000" required>
+                            <div class="invalid-feedback">
+                                Por favor, ingresa un número de tarjeta válido (16 dígitos).
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="expiryDate" class="form-label">Fecha de Expiración</label>
+                                <input type="text" class="form-control" id="expiryDate" placeholder="MM/AA" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa una fecha de expiración válida (MM/AA).
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                                <div class="invalid-feedback">
+                                    Por favor, ingresa un CVV válido (3 o 4 dígitos).
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="d-grid mt-4">
+                    <button type="button" class="btn btn-levelup btn-lg" id="finishPurchaseBtn">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto">
+        <div class="text-center">
+            <p>&copy; 2025 Level-Up Gamer. Todos los derechos reservados.</p>
+            <p>
+                <a href="#">Facebook</a> |
+                <a href="#">Instagram</a> |
+                <a href="#">Twitter</a>
+            </p>
+            <p>Contacto: <a href="mailto:soporte@levelupgamer.cl">soporte@levelupgamer.cl</a></p>
+            <p>Servicio tecnico
+                <a href="https://web.whatsapp.com">+569 8401 7204</a> 
+            </p>
+        </div>
+    </footer>
+    <script src="js/appes.js"></script>
+    <script src="js/catalogo.js"></script>
+    <script src="js/pago.js"></script>
+</body>
+</html>

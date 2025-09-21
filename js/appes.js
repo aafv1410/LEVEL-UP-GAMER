@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const correo = document.getElementById("correoLogin").value.trim();
             const password = document.getElementById("passwordLogin").value;
-            
+
             if (correo === 'admin@duoc.cl' && password === 'admin123') {
                 login({ correo, password, rol: 'admin' });
                 return;
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const fechaNacimiento = document.getElementById("fechaNacimiento").value;
             const password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("confirmPassword").value;
-            
+
             let tieneErrores = false;
 
             const allowedDomains = ['@duoc.cl', '@profesor.duoc.cl', '@gmail.com'];
@@ -112,14 +112,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 mostrarError('edadError', 'Debes tener al menos 18 años para registrarte.');
                 tieneErrores = true;
             }
-            
+
             const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
             const correoExistente = usuarios.find(user => user.correo === correo);
             if (correoExistente) {
                 mostrarError('correoError', 'Este correo electrónico ya está registrado.');
                 tieneErrores = true;
             }
-            
+
             if (tieneErrores) {
                 return;
             }
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             usuarios.push(newUser);
             localStorage.setItem("usuarios", JSON.stringify(usuarios));
-            
+
             login(newUser);
         });
     }
@@ -218,24 +218,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (usuarioLogeado.referralCode) {
-                if(referralCodeEl) referralCodeEl.value = usuarioLogeado.referralCode;
-                if(referralLinkEl) referralLinkEl.href = `registro.html?ref=${usuarioLogeado.referralCode}`;
+                if (referralCodeEl) referralCodeEl.value = usuarioLogeado.referralCode;
+                if (referralLinkEl) referralLinkEl.href = `registro.html?ref=${usuarioLogeado.referralCode}`;
             }
-            
+
             if (copyReferralBtn) {
                 copyReferralBtn.addEventListener('click', () => {
-                    if(referralCodeEl) {
+                    if (referralCodeEl) {
                         navigator.clipboard.writeText(referralCodeEl.value);
                     }
                 });
             }
-            
+
             updateLevel();
             updateUI();
 
             perfilForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-                
+
                 let todosLosUsuarios = JSON.parse(localStorage.getItem('usuarios'));
                 const index = todosLosUsuarios.findIndex(user => user.correo === usuarioLogeado.correo);
 
@@ -276,6 +276,94 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'inicio.html';
         }
     }
+
+    // --- LÓGICA ESPECÍFICA DEL CARRITO EN LA PÁGINA DE PAGO ---
+    function loadCartSummary() {
+        // Obtenemos los productos del localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartSummaryList = document.getElementById('cart-summary-list');
+        const totalAmountEl = document.getElementById('total-amount');
+        const shippingCost = 5000; // Costo de envío fijo
+
+        let subtotal = 0;
+
+        if (!cartSummaryList || !totalAmountEl) return; // Salir si los elementos no existen
+
+        // Limpiamos la lista para evitar duplicados
+        cartSummaryList.innerHTML = '';
+
+        // Si el carrito está vacío, mostramos un mensaje
+        if (cartItems.length === 0) {
+            cartSummaryList.innerHTML = `
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white">
+                    El carrito está vacío.
+                </li>
+            `;
+            totalAmountEl.textContent = `$${shippingCost.toLocaleString('es-CL')}`;
+            return;
+        }
+
+        // Iteramos sobre los productos del carrito para crear los elementos de la lista
+        cartItems.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item d-flex justify-content-between align-items-center bg-secondary text-white';
+
+            listItem.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <img src="${item.imagen}" alt="${item.nombre}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;" class="me-3">
+                    <div>
+                        <h6 class="my-0 text-white">${item.nombre} x ${item.cantidad}</h6>
+                        <small class="text-secondary">${item.descripcion}</small>
+                    </div>
+                </div>
+                <span class="text-white">$${(item.precio * item.cantidad).toLocaleString('es-CL')}</span>
+            `;
+
+            cartSummaryList.appendChild(listItem);
+            subtotal += item.precio * item.cantidad;
+        });
+
+        // Agregamos el subtotal a la lista
+        const subtotalItem = document.createElement('li');
+        subtotalItem.className = 'list-group-item d-flex justify-content-between align-items-center bg-secondary text-white';
+        subtotalItem.innerHTML = `
+            <p class="mb-0 text-white">Subtotal</p>
+            <p class="mb-0 text-white">$${subtotal.toLocaleString('es-CL')}</p>
+        `;
+        cartSummaryList.appendChild(subtotalItem);
+
+
+        // Calculamos el total final
+        const total = subtotal + shippingCost;
+        totalAmountEl.textContent = `$${total.toLocaleString('es-CL')}`;
+    }
+
+    // Llamamos a la función para cargar el resumen del carrito al iniciar la página
+    // Esto se ejecutará solo si el elemento con el ID 'cart-summary-list' existe en el DOM (es decir, en la página de pago)
+    if (document.getElementById('cart-summary-list')) {
+        loadCartSummary();
+    }
+
+    // --- LÓGICA PARA EL BOTÓN DE FINALIZAR COMPRA ---
+    const finalizarCompraBtn = document.querySelector('.btn-levelup.btn-lg');
+    if (finalizarCompraBtn) {
+        finalizarCompraBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            // Aquí puedes agregar la lógica de validación de los formularios de envío y pago
+            // ... (por ejemplo, validar que los campos no estén vacíos) ...
+
+            // Si la validación es exitosa, se puede simular la compra
+            alert('¡Compra finalizada con éxito! 🎉');
+
+            // Opcional: limpiar el carrito después de la compra
+            localStorage.removeItem('cart');
+
+            // Redireccionar a una página de confirmación o al inicio
+            window.location.href = "index.html";
+        });
+    }
+
 });
 
 // --- FUNCIONES GLOBALES DE LOGIN/LOGOUT ---
@@ -288,22 +376,6 @@ function login(userData) {
     }
 }
 
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    // ... (todo el código existente) ...
-
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('usuarioLogeado');
-            window.location.href = "index.html";
-        });
-    }
-
-});
-
-// La función de logout también puede estar fuera del DOMContentLoaded si lo prefieres
 function logout() {
     localStorage.removeItem('usuarioLogeado');
     window.location.href = "index.html";

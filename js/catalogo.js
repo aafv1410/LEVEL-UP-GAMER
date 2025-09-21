@@ -30,125 +30,125 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- DATOS DE PRODUCTOS ---
     const initialProducts = [{
-            id: "CAT01",
-            name: "Catan",
-            category: "Juegos de Mesa",
-            price: 29990,
-            description: "Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches de juego en familia o con amigos",
-            image: "img/catan.png",
-            stock: 15,
-            stockCritico: 5,
-            rating: 4.5,
-            comments: []
-        },
-        {
-            id: "CAR01",
-            name: "Carcassonne",
-            category: "Juegos de Mesa",
-            price: 24990,
-            description: "Un juego de colocación de fichas donde los jugadores construyen el paisaje alrededor de la fortaleza medieval de Carcassonne. Ideal para 2-5 jugadores y fácil de aprender",
-            image: "img/carcasonne.png",
-            stock: 20,
-            stockCritico: 5,
-            rating: 4.8,
-            comments: []
-        },
-        {
-            id: "XBX01",
-            name: "Controlador Xbox Series X",
-            category: "Accesorios",
-            price: 59990,
-            description: "Ofrece una experiencia de juego cómoda con botones mapeables y una respuesta táctil mejorada. Compatible con consolas Xbox y PC.",
-            image: "img/control.png",
-            stock: 10,
-            stockCritico: 3,
-            rating: 4.2,
-            comments: []
-        },
-        {
-            id: "HYP01",
-            name: "Auriculares Gamer HyperX Cloud II",
-            category: "Accesorios",
-            price: 79990,
-            description: "Proporcionan un sonido envolvente de calidad con un micrófono desmontable y almohadillas de espuma viscoelástica para mayor comodidad durante largas sesiones de juego",
-            image: "img/audifonos.png",
-            stock: 8,
-            stockCritico: 2,
-            rating: 4.7,
-            comments: []
-        },
-        {
-            id: "PS501",
-            name: "PlayStation 5",
-            category: "Consolas",
-            price: 549990,
-            description: "La consola de última generación de Sony, que ofrece gráficos impresionantes y tiempos de carga ultrarrápidos para una experiencia de juego inmersiva",
-            image: "img/ps55.png",
-            stock: 5,
-            stockCritico: 2,
-            rating: 5.0,
-            comments: []
-        },
-        {
-            id: "PCG01",
-            name: "PC Gamer ASUS ROG Strix",
-            category: "Computadores Gamers",
-            price: 1299990,
-            description: "Un potente equipo diseñado para los gamers más exigentes, equipado con los últimos componentes para ofrecer un rendimiento excepcional en cualquier juego",
-            image: "img/gabinete.png",
-            stock: 3,
-            stockCritico: 1,
-            rating: 4.9,
-            comments: []
-        },
-        {
-            id: "SGS01",
-            name: "Silla Gamer Secretlab Titan",
-            category: "Sillas Gamers",
-            price: 349990,
-            description: "Diseñada para el máximo confort, esta silla ofrece un soporte ergonómico y personalización ajustable para sesiones de juego prolongadas.",
-            image: "img/silla.png",
-            stock: 12,
-            stockCritico: 3,
-            rating: 4.6,
-            comments: []
-        },
-        {
-            id: "LOG01",
-            name: "Mouse Gamer Logitech G502 HERO",
-            category: "Mouse",
-            price: 49990,
-            description: "Con sensor de alta precisión y botones personalizables, este mouse es ideal para gamers que buscan un control preciso y personalización.",
-            image: "img/mouse.png",
-            stock: 25,
-            stockCritico: 10,
-            rating: 4.5,
-            comments: []
-        },
-        {
-            id: "RAZ01",
-            name: "Mousepad Razer Goliathus Extended Chroma",
-            category: "Mousepad",
-            price: 29990,
-            description: "Ofrece un área de juego amplia con iluminación RGB personalizable, asegurando una superficie suave y uniforme para el movimiento del mouse.",
-            image: "img/mousepad.jpg",
-            stock: 30,
-            stockCritico: 10,
-            rating: 4.3,
-            comments: []
-        },
-        {
-            id: "POL01",
-            name: "Polera Gamer Personalizada 'Level-Up'",
-            category: "Poleras Personalizadas",
-            price: 14990,
-            description: "Una camiseta cómoda y estilizada, con la posibilidad de personalizarla con tu gamer tag o diseño favorito.",
-            image: "img/polera.png",
-            stock: 50,
-            stockCritico: 15,
-            rating: 4.0,
-            comments: []
-        },
+        id: "CAT01",
+        name: "Catan",
+        category: "Juegos de Mesa",
+        price: 29990,
+        description: "Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches de juego en familia o con amigos",
+        image: "img/catan.png",
+        stock: 15,
+        stockCritico: 5,
+        rating: 4.5,
+        comments: []
+    },
+    {
+        id: "CAR01",
+        name: "Carcassonne",
+        category: "Juegos de Mesa",
+        price: 24990,
+        description: "Un juego de colocación de fichas donde los jugadores construyen el paisaje alrededor de la fortaleza medieval de Carcassonne. Ideal para 2-5 jugadores y fácil de aprender",
+        image: "img/carcasonne.png",
+        stock: 20,
+        stockCritico: 5,
+        rating: 4.8,
+        comments: []
+    },
+    {
+        id: "XBX01",
+        name: "Controlador Xbox Series X",
+        category: "Accesorios",
+        price: 59990,
+        description: "Ofrece una experiencia de juego cómoda con botones mapeables y una respuesta táctil mejorada. Compatible con consolas Xbox y PC.",
+        image: "img/control.png",
+        stock: 10,
+        stockCritico: 3,
+        rating: 4.2,
+        comments: []
+    },
+    {
+        id: "HYP01",
+        name: "Auriculares Gamer HyperX Cloud II",
+        category: "Accesorios",
+        price: 79990,
+        description: "Proporcionan un sonido envolvente de calidad con un micrófono desmontable y almohadillas de espuma viscoelástica para mayor comodidad durante largas sesiones de juego",
+        image: "img/audifonos.png",
+        stock: 8,
+        stockCritico: 2,
+        rating: 4.7,
+        comments: []
+    },
+    {
+        id: "PS501",
+        name: "PlayStation 5",
+        category: "Consolas",
+        price: 549990,
+        description: "La consola de última generación de Sony, que ofrece gráficos impresionantes y tiempos de carga ultrarrápidos para una experiencia de juego inmersiva",
+        image: "img/ps55.png",
+        stock: 5,
+        stockCritico: 2,
+        rating: 5.0,
+        comments: []
+    },
+    {
+        id: "PCG01",
+        name: "PC Gamer ASUS ROG Strix",
+        category: "Computadores Gamers",
+        price: 1299990,
+        description: "Un potente equipo diseñado para los gamers más exigentes, equipado con los últimos componentes para ofrecer un rendimiento excepcional en cualquier juego",
+        image: "img/gabinete.png",
+        stock: 3,
+        stockCritico: 1,
+        rating: 4.9,
+        comments: []
+    },
+    {
+        id: "SGS01",
+        name: "Silla Gamer Secretlab Titan",
+        category: "Sillas Gamers",
+        price: 349990,
+        description: "Diseñada para el máximo confort, esta silla ofrece un soporte ergonómico y personalización ajustable para sesiones de juego prolongadas.",
+        image: "img/silla.png",
+        stock: 12,
+        stockCritico: 3,
+        rating: 4.6,
+        comments: []
+    },
+    {
+        id: "LOG01",
+        name: "Mouse Gamer Logitech G502 HERO",
+        category: "Mouse",
+        price: 49990,
+        description: "Con sensor de alta precisión y botones personalizables, este mouse es ideal para gamers que buscan un control preciso y personalización.",
+        image: "img/mouse.png",
+        stock: 25,
+        stockCritico: 10,
+        rating: 4.5,
+        comments: []
+    },
+    {
+        id: "RAZ01",
+        name: "Mousepad Razer Goliathus Extended Chroma",
+        category: "Mousepad",
+        price: 29990,
+        description: "Ofrece un área de juego amplia con iluminación RGB personalizable, asegurando una superficie suave y uniforme para el movimiento del mouse.",
+        image: "img/mousepad.jpg",
+        stock: 30,
+        stockCritico: 10,
+        rating: 4.3,
+        comments: []
+    },
+    {
+        id: "POL01",
+        name: "Polera Gamer Personalizada 'Level-Up'",
+        category: "Poleras Personalizadas",
+        price: 14990,
+        description: "Una camiseta cómoda y estilizada, con la posibilidad de personalizarla con tu gamer tag o diseño favorito.",
+        image: "img/polera.png",
+        stock: 50,
+        stockCritico: 15,
+        rating: 4.0,
+        comments: []
+    },
     ];
 
     let productos = JSON.parse(localStorage.getItem('productos'));
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderStars(rating) {
         let starsHtml = '';
         const roundedRating = Math.round(rating);
-        
+
         for (let i = 1; i <= 5; i++) {
             if (i <= roundedRating) {
                 starsHtml += '<i class="fas fa-star text-warning"></i>'; // Estrella llena
@@ -244,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function removeFromCart(productId) {
         const item = cart.find(item => item.product.id === productId);
         if (item) {
+            // Se modifica esta lógica: si hay más de 1, se reduce. Si hay 1, se elimina
             if (item.quantity > 1) {
                 item.quantity--;
             } else {
@@ -259,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let total = 0;
 
         cart.forEach(item => {
-            // Se calcula el precio unitario con el descuento
             const precioConDescuento = item.product.price - (item.product.price * (descuento / 100));
             const subtotal = precioConDescuento * item.quantity;
             total += subtotal;
@@ -279,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsEl.appendChild(row);
         });
 
+        // Se corrige para mostrar 0 si el carrito está vacío
         cartTotalEl.textContent = `$${formatPrice(total)} CLP`;
     }
 
@@ -290,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 existingItem.quantity++;
             } else {
                 cart.push({
-                    product,
+                    product: product,
                     quantity: 1
                 });
             }
@@ -399,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         author,
                         text,
                         date: new Date().toLocaleDateString(),
-                        rating: selectedRating // Se guarda la calificación junto al comentario
+                        rating: selectedRating
                     };
 
                     const productIndex = productos.findIndex(p => p.id === currentProductId);
@@ -407,21 +408,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         const productToUpdate = productos[productIndex];
                         productToUpdate.comments.push(newComment);
 
-                        // Recalcular la calificación del producto como el promedio de todas las calificaciones
                         const totalRatings = productToUpdate.comments.reduce((sum, comment) => sum + comment.rating, 0);
                         productToUpdate.rating = totalRatings / productToUpdate.comments.length;
 
-                        // Guardar la lista de productos actualizada en localStorage
                         localStorage.setItem('productos', JSON.stringify(productos));
                     }
-                    
+
                     alert(`¡Gracias por tu valoración y comentario! Has calificado este producto con ${selectedRating} estrellas.`);
-                    
+
                     renderComments(product.comments, commentsSection);
                     document.getElementById('comment-form').reset();
-                    selectedRating = 0; // Reiniciar la calificación seleccionada
+                    selectedRating = 0;
 
-                    // Volver a renderizar las tarjetas de productos para que muestren la nueva calificación
                     let productosAmostrar = productos;
                     const urlParams = new URLSearchParams(window.location.search);
                     const categoryFilter = urlParams.get('category');
@@ -435,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
     });
-    
+
     function renderComments(comments, container) {
         container.innerHTML = '';
         if (comments.length === 0) {
