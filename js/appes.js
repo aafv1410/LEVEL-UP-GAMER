@@ -3,12 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- FUNCIONES DE UTILIDAD ---
     function mostrarError(elemento, mensaje) {
         const errorElement = document.getElementById(elemento);
+        
         if (errorElement) {
             errorElement.textContent = mensaje;
             errorElement.style.display = 'block';
         }
     }
+    const logoutBtn = document.getElementById('logout-btn');
 
+    // Verifica que el botón exista en la página antes de agregar el evento
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            // Llama a la función logout() que ya tienes definida
+            logout();
+        });
+    }
     function limpiarErrores() {
         const errorElements = document.querySelectorAll('.error-msg');
         errorElements.forEach(el => {
